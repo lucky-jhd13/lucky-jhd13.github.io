@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Johad Abidat — Portfolio | Développeur Full Stack</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Portfolio de Johad Abidat, Développeur Full Stack basé à Marseille / Aix-en-Provence. Spécialisé en architectures web modernes (Java / Spring Boot, PHP, Python, React / Next.js, Docker, VPS Linux Nginx).">
+    <meta name="author" content="Johad Abidat">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Johad Abidat — Portfolio | Développeur Full Stack">
+    <meta property="og:description" content="Développeur Full Stack autonome et rigoureux. Découvrez mes réalisations, compétences et mon projet SaaS DATA-11.">
+    <meta property="og:image" content="photo-profil-opt.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        mono: ['Space Grotesk', 'monospace'],
+                    },
+                    colors: {
+                        apple: {
+                            black: '#0a0a0a',
+                            grey: '#86868b',
+                            light: '#f5f5f7',
+                            accent: '#2563eb',
+                            hover: '#1d4ed8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="portfolio.css">
+
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
+</head>
+
+<body class="bg-[#fafafa] text-apple-black selection:bg-apple-accent selection:text-white">
+
+    <!-- Grain Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor">
+        <span class="cursor-text"></span>
+    </div>
+
+    <!-- Fullscreen Preloader -->
+    <div id="preloader">
+        <div class="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none overflow-hidden">
+            <span class="text-[25vw] font-black uppercase tracking-tighter whitespace-nowrap">PORTFOLIO</span>
+        </div>
+
+        <div class="relative z-10 flex flex-col items-center">
+            <!-- Animated Name -->
+            <div class="overflow-hidden flex gap-4">
+                <div class="overflow-hidden">
+                    <span class="loader-word inline-block text-3xl md:text-5xl font-black tracking-[0.2em] uppercase translate-y-[120%]">JOHAD</span>
+                </div>
+                <div class="overflow-hidden">
+                    <span class="loader-word inline-block text-3xl md:text-5xl font-black tracking-[0.2em] uppercase translate-y-[120%] text-apple-accent">ABIDAT</span>
+                </div>
+            </div>
+
+            <!-- Big Counter -->
+            <div class="mt-10 flex items-baseline justify-center">
+                <span id="loader-counter" class="text-6xl md:text-8xl font-mono font-black tracking-tight">0</span>
+                <span class="text-3xl md:text-4xl font-mono font-bold text-apple-accent ml-2">%</span>
+            </div>
+
+            <!-- Fine line loading bar -->
+            <div class="mt-8 w-[75vw] max-w-[380px] h-[2px] bg-white/10 rounded-full overflow-hidden relative">
+                <div id="loader-progress" class="absolute top-0 left-0 h-full bg-apple-accent w-0 rounded-full transition-all duration-100 ease-out"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fixed Header / Navbar -->
+    <header class="fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center transition-all duration-300 apple-glass lg:pl-28">
+        <a href="#" class="flex items-center gap-3 no-underline text-inherit interactive" data-cursor="Johad">
+            <div class="w-10 h-10 bg-apple-black text-white flex items-center justify-center rounded-xl font-bold text-base shadow-sm">
+                JA
+            </div>
+            <span class="font-bold text-lg tracking-tight hidden sm:inline-block">Johad Abidat</span>
+        </a>
+
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-10 text-[13px] font-semibold text-apple-grey uppercase tracking-widest font-mono">
+            <a href="#about" class="interactive hover:text-apple-black transition-colors" data-cursor="Profil">À propos</a>
+            <a href="#work" class="interactive hover:text-apple-black transition-colors" data-cursor="Projets">Portfolio</a>
+            <a href="#contact" class="interactive hover:text-apple-black transition-colors" data-cursor="Contact">Contact</a>
+        </nav>
+
+        <!-- Right Action Buttons -->
+        <div class="flex items-center gap-3">
+            <a href="cv.html" target="_blank" class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider font-mono bg-black/5 hover:bg-black/10 text-apple-black transition-all interactive" data-cursor="PDF">
+                <span>CV (PDF)</span>
+            </a>
+            <a href="#contact" class="px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider font-mono bg-apple-black hover:bg-apple-accent text-white transition-all shadow-sm interactive" data-cursor="Write">
+                <span>Me contacter</span>
+            </a>
+            <!-- Mobile Menu Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl bg-black/5 text-apple-black" aria-label="Menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-x-0 top-[72px] bg-white/95 backdrop-blur-xl border-b border-black/10 z-40 p-6 shadow-xl flex flex-col gap-4 text-center">
+        <a href="#about" class="py-2 text-base font-bold uppercase tracking-wider text-apple-black">À propos</a>
+        <a href="#work" class="py-2 text-base font-bold uppercase tracking-wider text-apple-black">Portfolio</a>
+        <a href="#contact" class="py-2 text-base font-bold uppercase tracking-wider text-apple-black">Contact</a>
+        <a href="cv.html" target="_blank" class="py-3 mt-2 rounded-xl bg-black/5 font-bold uppercase text-xs tracking-wider text-apple-black">📄 Voir mon CV</a>
+    </div>
+
+    <!-- Fixed Desktop Social Sidebar -->
+    <div class="fixed left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-6 z-40 text-apple-grey">
+        <a href="https://github.com/lucky-jhd13" target="_blank" rel="noopener noreferrer" class="interactive hover:text-apple-black transition-all hover:scale-110" data-cursor="Github" title="GitHub">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+        </a>
+        <a href="javascript:void(0)" id="discord-copy-trigger" class="interactive hover:text-apple-black transition-all hover:scale-110" data-cursor="Discord" title="Copier mon pseudo Discord">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 6h0a14.5 14.5 0 0 0-4-1.2 12.8 12.8 0 0 0-.5 1.2 13.9 13.9 0 0 0-3 0 12.8 12.8 0 0 0-.5-1.2A14.5 14.5 0 0 0 6 6a16.8 16.8 0 0 0-3 11.8 13.8 13.8 0 0 0 4.3 2.2 11.2 11.2 0 0 0 1-1.6 9.6 9.6 0 0 1-1.6-.8l.4-.3a11.9 11.9 0 0 0 10.8 0l.4.3a9.6 9.6 0 0 1-1.6.8 11.2 11.2 0 0 0 1 1.6 13.8 13.8 0 0 0 4.3-2.2A16.8 16.8 0 0 0 18 6z"></path>
+                <circle cx="9" cy="12" r="1.5"></circle>
+                <circle cx="15" cy="12" r="1.5"></circle>
+            </svg>
+        </a>
+        <a href="mailto:abidatjohad@gmail.com" class="interactive hover:text-apple-black transition-all hover:scale-110" data-cursor="Mail" title="M'écrire un email">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+        </a>
+        <div class="w-[1px] h-16 bg-black/10 mt-2"></div>
+        <span class="text-[10px] font-mono font-bold uppercase tracking-[0.3em] rotate-90 mt-8 whitespace-nowrap text-apple-grey">Marseille, FR</span>
+    </div>
+
+    <main class="lg:pl-20">
+        <!-- Hero Section -->
+        <section class="min-h-screen pt-28 pb-16 px-6 relative flex flex-col justify-between overflow-hidden">
+            <div class="relative w-full max-w-4xl mx-auto flex flex-col items-center text-center">
+
+                <!-- Availability Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 text-xs font-mono font-bold uppercase tracking-wider mb-6">
+                    <span class="pulse-indicator"></span>
+                    <span>Disponible Immédiatement // Développeur Full Stack</span>
+                </div>
+
+                <!-- Main Titles -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-apple-black leading-[1.05] uppercase mb-4">
+                    Johad Abidat<span class="text-apple-accent">.</span>
+                </h1>
+                <p class="text-sm sm:text-base md:text-lg text-apple-grey font-mono uppercase tracking-[0.2em] max-w-xl mb-10">
+                    Développeur Full Stack // Architecture Web &amp; Solutions Robustes
+                </p>
+
+                <!-- Central Composition : Portrait in Arch -->
+                <div class="img-cv-container interactive" data-cursor="Johad">
+                    <div class="hero-arch-bg"></div>
+                    <img src="photo-profil-opt.jpg" alt="Johad Abidat" class="img-cv" width="450" height="600" loading="eager">
+
+                    <!-- Curly SVG Drawing -->
+                    <svg class="curly-line" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path id="path-draw" d="M30 350C60 300 200 400 300 300C400 200 200 100 100 200C50 250 150 350 250 250C350 150 450 50 480 30" stroke="#2563eb" stroke-width="3" stroke-linecap="round" />
+                    </svg>
+
+                    <!-- Rotating Circular CTA Stamp -->
+                    <a href="#contact" class="cta-circle interactive" data-cursor="Click" title="Me contacter">
+                        <svg class="cta-circle-inner" viewBox="0 0 100 100" width="100" height="100">
+                            <path id="circlePath" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" fill="none" />
+                            <text>
+                                <textPath href="#circlePath" startOffset="0%">
+                                    • DISPONIBLE • CONTACTEZ-MOI •
+                                </textPath>
+                            </text>
+                        </svg>
+                        <div class="cta-arrow">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="7" y1="17" x2="17" y2="7"></line>
+                                <polyline points="7 7 17 7 17 17"></polyline>
+                            </svg>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Bottom Quick Stats -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 mt-14 pt-8 border-t border-black/5 w-full max-w-2xl font-mono text-center">
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-black text-apple-black">100%</span>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-apple-grey">Autonomie &amp; Code</span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-black text-apple-accent">SaaS</span>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-apple-grey">DATA-11 en Prod</span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-black text-apple-black">VPS</span>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-apple-grey">Linux / Nginx</span>
+                    </div>
+                    <div>
+                        <span class="block text-2xl sm:text-3xl font-black text-apple-accent">PACA</span>
+                        <span class="text-[11px] font-bold uppercase tracking-wider text-apple-grey">Mobilité Véhiculée</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Section (Bento Grid) -->
+        <section id="about" class="py-24 px-6">
+            <div class="max-w-6xl mx-auto">
+                <div class="text-left mb-12">
+                    <h2 class="text-xs uppercase tracking-[0.4em] font-bold text-apple-accent font-mono mb-3">Profil &amp; Expertise</h2>
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight">Construire des architectures fiables et maintenables.</h3>
+                </div>
+
+                <!-- Bento Grid Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                    <!-- Card 1: Mon Profil (Double width on desktop) -->
+                    <div class="bento-card md:col-span-2 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="w-2.5 h-2.5 rounded-full bg-apple-accent"></span>
+                                <h4 class="text-xs uppercase tracking-widest font-mono font-bold text-apple-grey">Développeur Full Stack</h4>
+                            </div>
+                            <h3 class="text-2xl sm:text-3xl font-bold mb-4 leading-snug">
+                                Autonome sur l'ensemble du cycle de développement web.
+                            </h3>
+                            <p class="text-apple-grey text-sm sm:text-base leading-relaxed mb-4">
+                                Développeur Full-Stack rigoureux, concevant des architectures web robustes, scalables et orientées performance. De la modélisation de bases de données relationnelles à la création d'API RESTful (Java / Spring Boot, PHP, Python) jusqu'à l'intégration d'interfaces réactives et modernes (React / Next.js, TypeScript, Tailwind).
+                            </p>
+                            <p class="text-apple-grey text-sm sm:text-base leading-relaxed">
+                                Habitué au travail en méthode agile, avec un grand sens du livrable, du clean code et une forte capacité d'apprentissage continu.
+                            </p>
+                        </div>
+                        <div class="mt-8 pt-4 border-t border-black/5 flex flex-wrap gap-4 text-xs font-mono text-apple-grey">
+                            <span>📍 Marseille / Aix-en-Provence</span>
+                            <span>🚗 Permis B (Véhiculé)</span>
+                            <span>⚡ Disponible immédiatement</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Projet Phare / SaaS DATA-11 -->
+                    <div class="bento-card bg-gradient-to-br from-[#0d1117] to-[#161b22] text-white border-white/10 flex flex-col justify-between">
+                        <div>
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-2.5 py-1 rounded-md bg-apple-accent/20 text-apple-accent text-[10px] font-mono font-bold uppercase tracking-wider border border-apple-accent/30">PROJET PHARE</span>
+                                <span class="text-xs font-mono text-emerald-400 font-bold">En production</span>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-2">Plateforme DATA-11</h3>
+                            <p class="text-gray-400 text-xs sm:text-sm leading-relaxed mb-4">
+                                SaaS d'analyse statistique sportive et de détection automatisée d'anomalies de cotes (Value Bets +EV%) sur plus de 100 compétitions internationales.
+                            </p>
+                            <ul class="text-xs text-gray-300 space-y-1.5 font-mono mb-4">
+                                <li>✓ Déploiement autonome sur VPS Linux (Ubuntu, Nginx, SSL)</li>
+                                <li>✓ Algorithmes prédictifs (Dixon-Coles, xG)</li>
+                                <li>✓ Flux API REST massifs avec mise en cache optimisée</li>
+                            </ul>
+                        </div>
+                        <a href="https://data-11.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-between p-3 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-mono font-bold transition-all interactive" data-cursor="Site">
+                            <span>Visiter data-11.com</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+
+                    <!-- Card 3: Langages & Compétences -->
+                    <div class="bento-card flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xs uppercase tracking-widest font-mono font-bold text-apple-grey mb-4">Langages &amp; Frameworks</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-[11px] uppercase tracking-wider text-apple-accent font-mono font-bold mb-2">Backend</p>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Java (Spring Boot)</span>
+                                        <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">PHP 8.x</span>
+                                        <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Python</span>
+                                        <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">SQL (MySQL)</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-[11px] uppercase tracking-wider text-apple-accent font-mono font-bold mb-2">Frontend</p>
+                                    <div class="flex flex-wrap gap-1.5">
+                                        <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">React / Next.js</span>
+                                        <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">TypeScript</span>
+                                        <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">JavaScript</span>
+                                        <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Tailwind CSS</span>
+                                        <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">HTML5 / CSS3</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Outils & Infrastructure DevOps -->
+                    <div class="bento-card flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xs uppercase tracking-widest font-mono font-bold text-apple-grey mb-4">Infrastructure &amp; DevOps</h4>
+                            <p class="text-apple-grey text-xs mb-4 leading-relaxed">
+                                Compétences concrètes en administration système, conteneurisation et déploiement de serveurs de production.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Docker</span>
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Docker Compose</span>
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">VPS (Linux Ubuntu)</span>
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Nginx Reverse Proxy</span>
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Git / GitHub</span>
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Postman / REST API</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Soft Skills & Formation -->
+                    <div class="bento-card flex flex-col justify-between">
+                        <div>
+                            <h4 class="text-xs uppercase tracking-widest font-mono font-bold text-apple-grey mb-4">Formation &amp; Méthode</h4>
+                            <div class="mb-4">
+                                <p class="text-sm font-bold text-apple-black">Web@cadémie by Epitech (Marseille)</p>
+                                <p class="text-xs text-apple-grey font-mono">Développeur Intégrateur Web (Full Stack)</p>
+                            </div>
+                            <p class="text-apple-grey text-xs mb-3 leading-relaxed">
+                                Pédagogie active par projets intensifs, autonomie, résolution de problèmes complexes et esprit d'équipe.
+                            </p>
+                            <div class="flex flex-wrap gap-1.5">
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Méthode Agile</span>
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Persévérant</span>
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Force de proposition</span>
+                                <span class="bg-[#f5f5f7] px-2.5 py-1 rounded-lg text-xs font-mono font-bold">Esprit d'équipe</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section (Stacked Project Cards) -->
+        <section id="work" class="projects-section px-6">
+            <div class="max-w-6xl mx-auto mb-16 md:mb-24">
+                <h2 class="text-[14vw] font-black uppercase leading-none tracking-tighter opacity-10 mb-[-5vw] select-none pointer-events-none">Projects</h2>
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-end relative z-10">
+                    <div>
+                        <h2 class="text-3xl md:text-5xl font-black mb-3 tracking-tight">Mes Réalisations<span class="text-apple-accent">.</span></h2>
+                        <p class="text-apple-grey text-base md:text-lg max-w-lg">Projets applicatifs complets, architectures backend et interfaces web conçus en autonomie.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="max-w-6xl mx-auto space-y-16">
+
+                <!-- Project 01: DATA-11 -->
+                <div class="project-card interactive" data-cursor="DATA-11">
+                    <div class="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-10">
+                        <div class="flex-grow">
+                            <span class="card-num">01</span>
+                            <div class="mt-4">
+                                <p class="card-label">SaaS &amp; Machine Learning / Stats</p>
+                                <h3 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3">Plateforme DATA-11 (data-11.com)</h3>
+                                <p class="text-gray-300 text-sm md:text-base max-w-2xl mb-6 leading-relaxed">
+                                    Conception et déploiement d'une plateforme SaaS d'analyse statistique sportive et de détection automatisée d'anomalies de cotes (Value Bets +EV%) sur plus de 100 compétitions mondiales. Ingestion de flux API massifs, modélisation mathématique et interface réactive temps réel.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="tech-tag">Next.js</span>
+                                    <span class="tech-tag">React</span>
+                                    <span class="tech-tag">TypeScript</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">Tailwind CSS</span>
+                                    <span class="tech-tag">VPS Linux Ubuntu</span>
+                                    <span class="tech-tag">Nginx</span>
+                                    <span class="tech-tag">API REST</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex flex-wrap lg:flex-nowrap gap-3 w-full lg:w-auto justify-start lg:justify-end shrink-0">
+                            <button class="btn-info-project interactive" data-project-id="data-11" aria-label="Détails techniques" data-cursor="Info" title="Détails techniques">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                            </button>
+                            <a href="https://data-11.com" target="_blank" rel="noopener noreferrer" class="btn-live-project interactive" data-cursor="Site">
+                                <span>Voir en ligne</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Visual Preview -->
+                    <div class="mt-8 rounded-2xl overflow-hidden border border-white/10 bg-black/40 cursor-pointer project-preview-trigger group relative" data-img-src="data-11-mockup.jpg" data-img-alt="DATA-11 Dashboard Interface">
+                        <img src="data-11-mockup.jpg" alt="DATA-11 Dashboard Interface" class="w-full h-auto max-h-[460px] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-black text-xs font-mono font-bold uppercase tracking-wider">Agrandir la capture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 02: My_Cinema -->
+                <div class="project-card interactive" data-cursor="Cinema">
+                    <div class="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-10">
+                        <div class="flex-grow">
+                            <span class="card-num">02</span>
+                            <div class="mt-4">
+                                <p class="card-label">Application Web &amp; BDD Relationnelle // PHP &amp; MySQL</p>
+                                <h3 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3">My_Cinema — Complexe Cinématographique</h3>
+                                <p class="text-gray-300 text-sm md:text-base max-w-2xl mb-6 leading-relaxed">
+                                    Développement complet d'une application web de gestion de complexe cinématographique. Modélisation relationnelle de BDD avec requêtes SQL optimisées (jointures multiples, filtres), gestion des programmations et interface client dynamique.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="tech-tag">PHP 8.x</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">Architecture MVC</span>
+                                    <span class="tech-tag">SQL Avancé</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">HTML5 / CSS3</span>
+                                    <span class="tech-tag">Git</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex flex-wrap lg:flex-nowrap gap-3 w-full lg:w-auto justify-start lg:justify-end shrink-0">
+                            <button class="btn-info-project interactive" data-project-id="my-cinema" aria-label="Détails techniques" data-cursor="Info" title="Détails techniques">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                            </button>
+                            <a href="demos/my-cinema/index.html" target="_blank" class="btn-live-project interactive" data-cursor="Démo">
+                                <span>Tester la démo</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/lucky-jhd13/My_cinema" target="_blank" rel="noopener noreferrer" class="btn-live-project interactive" data-cursor="Code">
+                                <span>Code GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Visual Preview -->
+                    <div class="mt-8 rounded-2xl overflow-hidden border border-white/10 bg-black/40 cursor-pointer project-preview-trigger group relative" data-img-src="projects-cinema.jpg" data-img-alt="My Cinema Preview">
+                        <img src="projects-cinema.jpg" alt="My Cinema Preview" class="w-full h-auto max-h-[460px] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-black text-xs font-mono font-bold uppercase tracking-wider">Agrandir la capture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 03: Klivio — Plateforme E-learning -->
+                <div class="project-card interactive" data-cursor="Klivio">
+                    <div class="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-10">
+                        <div class="flex-grow">
+                            <span class="card-num">03</span>
+                            <div class="mt-4">
+                                <p class="card-label">Intégration Web &amp; Responsive // Figma to Code</p>
+                                <h3 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3">Klivio — Plateforme de Formations en Ligne</h3>
+                                <p class="text-gray-300 text-sm md:text-base max-w-2xl mb-6 leading-relaxed">
+                                    Intégration pixel-perfect d'une plateforme d'apprentissage en ligne moderne à partir d'une maquette Figma. Conception 100% responsive fluide (mobile-first), typographie soignée, composants réutilisables et structure HTML5 / CSS3 sémantique optimisée.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="tech-tag">HTML5 Sémantique</span>
+                                    <span class="tech-tag">CSS3 Grid &amp; Flexbox</span>
+                                    <span class="tech-tag">Figma to Code</span>
+                                    <span class="tech-tag">Responsive Design</span>
+                                    <span class="tech-tag">FontAwesome</span>
+                                    <span class="tech-tag">Git</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex flex-wrap lg:flex-nowrap gap-3 w-full lg:w-auto justify-start lg:justify-end shrink-0">
+                            <button class="btn-info-project interactive" data-project-id="klivio" aria-label="Détails techniques" data-cursor="Info" title="Détails techniques">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                            </button>
+                            <a href="demos/klivio/index.html" target="_blank" class="btn-live-project interactive" data-cursor="Démo">
+                                <span>Tester la démo</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/lucky-jhd13/Klivio" target="_blank" rel="noopener noreferrer" class="btn-live-project interactive" data-cursor="Code">
+                                <span>Code GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Visual Preview -->
+                    <div class="mt-8 rounded-2xl overflow-hidden border border-white/10 bg-black/40 cursor-pointer project-preview-trigger group relative" data-img-src="projects-klivio.jpg" data-img-alt="Klivio Preview">
+                        <img src="projects-klivio.jpg" alt="Klivio Preview" class="w-full h-auto max-h-[460px] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-black text-xs font-mono font-bold uppercase tracking-wider">Agrandir la capture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 04: Générateur de CV Dynamique -->
+                <div class="project-card interactive" data-cursor="Générateur">
+                    <div class="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-10">
+                        <div class="flex-grow">
+                            <span class="card-num">04</span>
+                            <div class="mt-4">
+                                <p class="card-label">Outil Interactif &amp; DOM // JavaScript ES6</p>
+                                <h3 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3">Générateur de CV Dynamique &amp; Export PDF</h3>
+                                <p class="text-gray-300 text-sm md:text-base max-w-2xl mb-6 leading-relaxed">
+                                    Application web interactive permettant la création et personnalisation instantanée de CV professionnels. Synchronisation réactive en direct des champs du formulaire vers la prévisualisation, gestion d'images locales via FileReader et moteur d'impression PDF standard A4.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="tech-tag">JavaScript ES6</span>
+                                    <span class="tech-tag">DOM Manipulation</span>
+                                    <span class="tech-tag">FileReader API</span>
+                                    <span class="tech-tag">Export PDF / Print CSS</span>
+                                    <span class="tech-tag">Bootstrap 5 / CSS3</span>
+                                    <span class="tech-tag">Git</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex flex-wrap lg:flex-nowrap gap-3 w-full lg:w-auto justify-start lg:justify-end shrink-0">
+                            <button class="btn-info-project interactive" data-project-id="cv-generator" aria-label="Détails techniques" data-cursor="Info" title="Détails techniques">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                            </button>
+                            <a href="demos/cv-generator/index.html" target="_blank" class="btn-live-project interactive" data-cursor="Démo">
+                                <span>Tester la démo</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                            <a href="https://github.com/lucky-jhd13/g-n-rateur_cv" target="_blank" rel="noopener noreferrer" class="btn-live-project interactive" data-cursor="Code">
+                                <span>Code GitHub</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Visual Preview -->
+                    <div class="mt-8 rounded-2xl overflow-hidden border border-white/10 bg-black/40 cursor-pointer project-preview-trigger group relative" data-img-src="projects-cvgenerator.jpg" data-img-alt="CV Generator Preview">
+                        <img src="projects-cvgenerator.jpg" alt="CV Generator Preview" class="w-full h-auto max-h-[460px] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-black text-xs font-mono font-bold uppercase tracking-wider">Agrandir la capture</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 05: ConnectIn V2 -->
+                <div class="project-card interactive" data-cursor="ConnectIn">
+                    <div class="flex flex-col lg:flex-row justify-between items-start gap-6 lg:gap-10">
+                        <div class="flex-grow">
+                            <span class="card-num">05</span>
+                            <div class="mt-4">
+                                <p class="card-label">Réseau Social Full-Stack // Spring Boot 3 &amp; Vue 3</p>
+                                <h3 class="text-2xl sm:text-3xl md:text-4xl font-black mb-3">ConnectIn — Intranet Professionnel</h3>
+                                <p class="text-gray-300 text-sm md:text-base max-w-2xl mb-6 leading-relaxed">
+                                    Application complète de réseau social d'entreprise (type LinkedIn / Intranet). Architecture découplée intégrant une API RESTful sécurisée avec Spring Security et tokens JWT, persistance des données avec Spring Data JPA / MySQL, et un client moderne réactif en Vue 3 avec Vite, Pinia et Tailwind CSS v4.
+                                </p>
+                                <div class="flex flex-wrap gap-2 mb-6">
+                                    <span class="tech-tag">Java 21</span>
+                                    <span class="tech-tag">Spring Boot 3.4</span>
+                                    <span class="tech-tag">Spring Security (JWT)</span>
+                                    <span class="tech-tag">Vue.js 3.5</span>
+                                    <span class="tech-tag">TypeScript</span>
+                                    <span class="tech-tag">Tailwind CSS v4</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">Vite</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Actions -->
+                        <div class="flex flex-wrap lg:flex-nowrap gap-3 w-full lg:w-auto justify-start lg:justify-end shrink-0">
+                            <button class="btn-info-project interactive" data-project-id="connectin" aria-label="Détails techniques" data-cursor="Info" title="Détails techniques">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                </svg>
+                            </button>
+                            <a href="https://github.com/lucky-jhd13/ConnectinV2" target="_blank" rel="noopener noreferrer" class="btn-live-project interactive" data-cursor="Code">
+                                <span>Code GitHub</span>
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                    <polyline points="15 3 21 3 21 9"></polyline>
+                                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Project Visual Preview -->
+                    <div class="mt-8 rounded-2xl overflow-hidden border border-white/10 bg-black/40 cursor-pointer project-preview-trigger group relative" data-img-src="projects-connectin.jpg" data-img-alt="ConnectIn Preview">
+                        <img src="projects-connectin.jpg" alt="ConnectIn Preview" class="w-full h-auto max-h-[460px] object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                            <span class="px-4 py-2 rounded-full bg-white/90 text-black text-xs font-mono font-bold uppercase tracking-wider">Agrandir la capture</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-32 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+                    <!-- Left: Contact Details -->
+                    <div class="text-left">
+                        <h2 class="text-xs uppercase tracking-[0.4em] font-bold text-apple-accent font-mono mb-4">Contact</h2>
+                        <h3 class="text-3xl sm:text-5xl font-black mb-6 leading-tight">
+                            Échangeons pour une <span class="text-apple-accent">opportunité.</span>
+                        </h3>
+                        <p class="text-apple-grey text-base md:text-lg mb-10 max-w-md leading-relaxed">
+                            Disponible immédiatement pour renforcer vos équipes techniques ou contribuer à vos projets web et applicatifs. N'hésitez pas à me contacter !
+                        </p>
+
+                        <div class="space-y-6">
+                            <!-- Email -->
+                            <a href="mailto:abidatjohad@gmail.com" class="flex items-center gap-4 group interactive" data-cursor="Email">
+                                <div class="w-12 h-12 rounded-full bg-apple-accent/10 flex items-center justify-center group-hover:bg-apple-accent group-hover:text-white transition-colors duration-300">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                                        <polyline points="22,6 12,13 2,6" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[11px] text-apple-grey uppercase font-bold tracking-widest font-mono">Email</p>
+                                    <p class="text-base sm:text-lg font-bold">abidatjohad@gmail.com</p>
+                                </div>
+                            </a>
+
+                            <!-- Phone -->
+                            <a href="tel:0749044595" class="flex items-center gap-4 group interactive" data-cursor="Appel">
+                                <div class="w-12 h-12 rounded-full bg-apple-accent/10 flex items-center justify-center group-hover:bg-apple-accent group-hover:text-white transition-colors duration-300">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[11px] text-apple-grey uppercase font-bold tracking-widest font-mono">Téléphone</p>
+                                    <p class="text-base sm:text-lg font-bold">07 49 04 45 95</p>
+                                </div>
+                            </a>
+
+                            <!-- Location -->
+                            <div class="flex items-center gap-4 group interactive" data-cursor="Map">
+                                <div class="w-12 h-12 rounded-full bg-apple-accent/10 flex items-center justify-center group-hover:bg-apple-accent group-hover:text-white transition-colors duration-300">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                                        <circle cx="12" cy="10" r="3" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[11px] text-apple-grey uppercase font-bold tracking-widest font-mono">Localisation &amp; Mobilité</p>
+                                    <p class="text-base sm:text-lg font-bold">Marseille / Aix-en-Provence (Véhiculé)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Modern Contact Form -->
+                    <div class="bg-white p-6 sm:p-10 md:p-12 rounded-[36px] shadow-2xl shadow-black/5 border border-black/5 relative overflow-hidden w-full max-w-[480px] mx-auto">
+                        <!-- Success Message -->
+                        <div id="form-success" class="hidden absolute inset-0 bg-white z-20 flex flex-col items-center justify-center text-center p-8">
+                            <div class="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mb-4">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12" />
+                                </svg>
+                            </div>
+                            <h4 class="text-2xl font-bold mb-2">Message envoyé !</h4>
+                            <p class="text-apple-grey text-sm mb-6">Merci pour votre message ! Je vous recontacte rapidement.</p>
+                            <button onclick="document.getElementById('form-success').classList.add('hidden')" class="text-xs font-mono font-bold uppercase tracking-widest text-apple-accent hover:underline">
+                                Envoyer un autre message
+                            </button>
+                        </div>
+
+                        <form id="contact-form" class="space-y-5 relative z-10">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="name" class="block text-xs font-bold uppercase tracking-widest text-apple-grey font-mono mb-2 ml-1">Nom</label>
+                                    <input type="text" id="name" required placeholder="Votre nom" class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-xs font-bold uppercase tracking-widest text-apple-grey font-mono mb-2 ml-1">Email</label>
+                                    <input type="email" id="email" required placeholder="nom@entreprise.com" class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-xs font-bold uppercase tracking-widest text-apple-grey font-mono mb-2 ml-1">Sujet</label>
+                                <input type="text" id="subject" required placeholder="Opportunité / Projet" class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-xs font-bold uppercase tracking-widest text-apple-grey font-mono mb-2 ml-1">Message</label>
+                                <textarea id="message" rows="4" required placeholder="Votre message..." class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none resize-none"></textarea>
+                            </div>
+
+                            <button type="submit" class="w-full bg-apple-black text-white font-mono font-bold py-4 rounded-2xl hover:bg-apple-accent transition-all duration-300 uppercase tracking-widest text-xs interactive shadow-lg shadow-black/10" data-cursor="Send">
+                                Envoyer le message
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="w-7 h-7 bg-apple-black text-white flex items-center justify-center rounded-lg text-xs font-bold font-mono">JA</span>
+                <span class="font-bold text-sm text-apple-black">Johad Abidat</span>
+            </div>
+            <div>
+                &copy; <span id="current-year">2026</span> Johad Abidat — Développeur Full Stack. Tous droits réservés.
+            </div>
+            <div class="flex items-center gap-4 text-xs font-mono">
+                <a href="https://github.com/lucky-jhd13" target="_blank" class="hover:text-apple-black">GitHub</a>
+                <span>•</span>
+                <a href="cv.html" target="_blank" class="hover:text-apple-black">CV</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <!-- 1. Lightbox Modal -->
+    <div id="lightbox-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <button id="lightbox-close" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-all cursor-pointer z-50" aria-label="Fermer">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <img id="lightbox-img" src="" alt="" class="lightbox-img">
+    </div>
+
+    <!-- 2. Readme / Details Modal -->
+    <div id="readme-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-hidden="true">
+        <div class="modal-content">
+            <div class="flex items-start justify-between gap-4 mb-6 pb-4 border-b border-white/10">
+                <h3 id="readme-title" class="text-xl sm:text-2xl font-black text-white leading-tight">Détails du Projet</h3>
+                <button id="readme-close" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center shrink-0 transition-all cursor-pointer" aria-label="Fermer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div id="readme-body"></div>
+        </div>
+    </div>
+
+    <!-- Main JS -->
+    <script src="portfolio.js"></script>
+</body>
+
+</html>

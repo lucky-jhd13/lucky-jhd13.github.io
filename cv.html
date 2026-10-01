@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Johad Abidat</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            font-size: 10px; 
+            line-height: 1.2;
+            margin: 0;
+            padding: 10px;
+        }
+        
+        .cv-container {
+            max-width: 21cm; 
+            margin: auto;
+            background: #ffffff;
+            padding: 0.7cm;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            box-sizing: border-box; 
+        }
+
+        header {
+            text-align: center;
+            border-bottom: 2px solid #1A365D;
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.2em;
+            color: #1A365D;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        header h2 {
+            margin: 2px 0 0 0;
+            font-size: 1.2em;
+            color: #555;
+            font-weight: 400;
+        }
+
+        /* Style des boutons d'action (Téléchargement & Retour Portfolio) */
+        .download-btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        .download-btn, .back-portfolio-btn {
+            padding: 9px 18px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            box-sizing: border-box;
+            line-height: 1.2;
+        }
+        .download-btn {
+            background-color: #1A365D;
+            color: white;
+            border: 1px solid #1A365D;
+            box-shadow: 0 2px 8px rgba(26, 54, 93, 0.25);
+        }
+        .download-btn:hover {
+            background-color: #2B6CB0;
+            border-color: #2B6CB0;
+            transform: translateY(-1px);
+        }
+        .back-portfolio-btn {
+            background-color: #ffffff;
+            color: #1A365D;
+            border: 1px solid #CBD5E1;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        }
+        .back-portfolio-btn:hover {
+            background-color: #F8FAFC;
+            border-color: #1A365D;
+            color: #0F172A;
+            transform: translateY(-1px);
+        }
+
+        .cv-body {
+            display: grid;
+            grid-template-columns: 32% 64%; 
+            gap: 4%;
+        }
+
+        .section-title {
+            color: #1A365D;
+            border-bottom: 2px solid #E2E8F0;
+            padding-bottom: 2px;
+            margin-top: 5px;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            text-transform: uppercase;
+        }
+        
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #1A365D;
+            margin: 0 auto;
+            display: block;
+        }
+        .contact-info a, .contact-info p {
+            display: block;
+            color: #2B6CB0;
+            text-decoration: none;
+            margin: 2px 0;
+            font-weight: 500;
+            font-size: 0.9em;
+        }
+        .skills-list {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+        .skill-badge {
+            background-color: #EDF2F7;
+            color: #2D3748;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.8em;
+            border: 1px solid #CBD5E0;
+        }
+        .skill-category {
+            margin-bottom: 5px;
+        }
+        .skill-cat-title {
+            font-size: 0.85em;
+            font-weight: 700;
+            color: #1A365D;
+            margin: 3px 0 2px 0;
+        }
+        .text-small {
+            font-size: 0.85em;
+            color: #4A5568;
+            margin: 2px 0;
+        }
+
+        .right-column {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .project {
+            margin-bottom: 8px;
+        }
+        .project h4 {
+            margin: 0 0 2px 0;
+            font-size: 1em;
+            color: #2B6CB0;
+            text-transform: uppercase;
+        }
+        .project p {
+            margin: 1px 0;
+            color: #4A5568;
+            text-align: justify;
+            font-size: 0.85em;
+        }
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+        }
+        .experience-date {
+            font-size: 0.85em;
+            color: #718096;
+            font-weight: 600;
+        }
+        .tech-list {
+            font-weight: bold;
+            color: #1A365D;
+        }
+
+        @media screen and (max-width: 768px) {
+            body {
+                padding: 12px 8px;
+                font-size: 12px;
+            }
+            .cv-container {
+                max-width: 100%;
+                width: 100%;
+                padding: 20px 14px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+            }
+            .cv-body {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            .download-btn-container {
+                flex-direction: column;
+                width: 100%;
+                gap: 8px;
+            }
+            .download-btn, .back-portfolio-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 10px 16px;
+                font-size: 13px;
+            }
+            .profile-pic {
+                width: 110px;
+                height: 110px;
+            }
+            .project p {
+                text-align: left;
+            }
+            header h1 {
+                font-size: 1.8em;
+            }
+            header h2 {
+                font-size: 1.1em;
+            }
+        }
+
+        @media print {
+            @page { size: A4; margin: 0.4cm; }
+            body { background-color: #ffffff; padding: 0; }
+            .cv-container { box-shadow: none; padding: 0; max-width: 21cm; }
+            .cv-body { display: grid; grid-template-columns: 32% 64%; gap: 4%; }
+            .download-btn-container { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="download-btn-container">
+        <a href="index.html" class="back-portfolio-btn">← Retour au Portfolio</a>
+        <button class="download-btn" onclick="window.print()">📥 Télécharger mon CV (PDF)</button>
+    </div>
+
+    <div class="cv-container">
+        <header>
+            <h1>Johad Abidat</h1>
+            <h2>Développeur Full Stack</h2>
+        </header>
+
+        <div class="cv-body">
+            <aside class="left-column">
+                <img src="photo-profil.png" alt="Photo Johad Abidat" class="profile-pic">
+
+                <section>
+                    <h3 class="section-title">Contact</h3>
+                    <div class="contact-info">
+                        <a href="mailto:abidatjohad@gmail.com">abidatjohad@gmail.com</a>
+                        <p>📞 07 49 04 45 95</p>
+                        <a href="https://github.com/lucky-jhd13" target="_blank">GitHub: lucky-jhd13</a>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Mobilité</h3>
+                    <div class="skills-list">
+                        <span class="skill-badge">Permis B</span>
+                        <span class="skill-badge">Véhiculé</span>
+                        <span class="skill-badge">Aix, Marignane, Vitrolles, Marseille, Pertuis</span>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Compétences</h3>
+                    <div class="skill-category">
+                        <div class="skill-cat-title">Backend</div>
+                        <div class="skills-list">
+                            <span class="skill-badge">Java (Spring Boot)</span>
+                            <span class="skill-badge">PHP</span>
+                            <span class="skill-badge">Python</span>
+                            <span class="skill-badge">SQL (MySQL)</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-cat-title">Frontend</div>
+                        <div class="skills-list">
+                            <span class="skill-badge">React / Next.js</span>
+                            <span class="skill-badge">TypeScript</span>
+                            <span class="skill-badge">JavaScript</span>
+                            <span class="skill-badge">HTML5 / CSS3</span>
+                            <span class="skill-badge">Tailwind CSS</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="skill-cat-title">Outils & DevOps</div>
+                        <div class="skills-list">
+                            <span class="skill-badge">Docker</span>
+                            <span class="skill-badge">Docker Compose</span>
+                            <span class="skill-badge">VPS (Linux Ubuntu)</span>
+                            <span class="skill-badge">Nginx</span>
+                            <span class="skill-badge">Git / GitHub</span>
+                            <span class="skill-badge">Postman / REST API</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Langues</h3>
+                    <p class="text-small"><strong>Français :</strong> Langue maternelle</p>
+                    <p class="text-small"><strong>Anglais :</strong> Niveau B2</p>
+                    <p class="text-small"><strong>Espagnol :</strong> Niveau B2</p>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Soft Skills</h3>
+                    <p class="text-small">Persévérant</p>
+                    <p class="text-small">Perspicace</p>
+                    <p class="text-small">Esprit d'équipe</p>
+                    <p class="text-small">Force de proposition</p>
+                </section>
+                
+                <section>
+                    <h3 class="section-title">Intérêts</h3>
+                    <p class="text-small">Passionné par les nouvelles technologies, je m'intéresse particulièrement à l'intelligence artificielle et au développement de logiciels innovants.</p>
+                    <p class="text-small">Sports (Foot, Basket, Tennis)</p>
+                    <p class="text-small">Jeux vidéo</p>
+                </section>
+            </aside>
+
+            <main class="right-column">
+                <section>
+                    <h3 class="section-title">Profil & Objectif</h3>
+                    <p class="text-small">
+                        Développeur Full-Stack rigoureux, concevant des architectures web fiables et maintenables. Autonome sur l’ensemble du cycle de développement : modélisation de bases de données relationnelles, création d'API RESTful robustes (Java / Spring Boot, PHP) et intégration d'interfaces réactives. Habitué à travailler en méthode agile, avec une forte capacité d'adaptation et le sens du livrable. Disponible immédiatement pour renforcer vos équipes techniques.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Projets Réalisés</h3>
+                    
+                    <div class="project">
+                        <h4>Plateforme DATA-11 (<a href="https://data-11.com" target="_blank" style="text-transform: none; color: inherit;">data-11.com</a>)</h4>
+                        <p><strong>Objectif :</strong> Concevoir et déployer une plateforme SaaS d'analyse statistique sportive et de détection automatisée de Value Bets (+EV%) en temps réel sur plus de 100 compétitions internationales.</p>
+                        <p><strong>Défis :</strong> Déploiement et administration sur VPS Linux (Ubuntu, reverse proxy Nginx, SSL) ; ingestion de flux massifs via API REST avec cache optimisé ; implémentation d'algorithmes prédictifs (modèle Dixon-Coles, xG) ; dashboard réactif Next.js avec espace membre et abonnements.</p>
+                        <p class="tech-list">Technologies : Next.js, React, TypeScript, Python, Tailwind CSS, API REST, VPS Linux, Nginx, Git.</p>
+                    </div>
+
+                    <div class="project">
+                        <h4>My_cinema</h4>
+                        <p><strong>Objectif :</strong> Développer une application web de recherche et de gestion de catalogue de films.</p>
+                        <p><strong>Défis :</strong> Modélisation de la base de données relationnelle et conception de requêtes SQL complexes (jointures, filtres multiples).</p>
+                        <p class="tech-list">Technologies : PHP, MySQL, HTML5, CSS3, Git.</p>
+                    </div>
+
+                    <div class="project">
+                        <h4>Environnements et Déploiement Conteneurisé (Docker / DevOps)</h4>
+                        <p><strong>Objectif :</strong> Standardiser les environnements de développement et automatiser le déploiement applicatif.</p>
+                        <p><strong>Réalisations :</strong> Rédaction de Dockerfile et docker-compose.yml, orchestration multi-services (serveur web, applicatif, base de données), isolation des réseaux et gestion des volumes.</p>
+                        <p class="tech-list">Technologies : Docker, Docker-Compose, Linux, Git.</p>
+                    </div>
+
+                    <div class="project">
+                        <h4>Générateur de CV Dynamique & Projet Klivio</h4>
+                        <p><strong>Objectif :</strong> Réaliser des interfaces web sur mesure, des intégrations pixel-perfect depuis maquettes Figma et des outils interactifs d'exportation de documents.</p>
+                        <p><strong>Défis :</strong> Synchronisation réactive des événements DOM sans rechargement, manipulation d'images avec FileReader API, respect strict des maquettes Figma et intégration 100% responsive.</p>
+                        <p class="tech-list">Technologies : HTML5, CSS3, JavaScript ES6, DOM API, Figma, Git.</p>
+                    </div>
+
+                    <div class="project">
+                        <h4>ConnectIn — Réseau Social d'Entreprise</h4>
+                        <p><strong>Objectif :</strong> Concevoir une application complète de réseau social d'entreprise (architecture découplée API REST et client SPA réactif).</p>
+                        <p><strong>Défis :</strong> Backend sécurisé avec Java 21, Spring Boot 3, Spring Security et tokens JWT ; persistance relationnelle avec Spring Data JPA / Hibernate ; frontend dynamique développé sous Vue.js 3, Vite, TypeScript et Tailwind CSS.</p>
+                        <p class="tech-list">Technologies : Java 21, Spring Boot 3, Vue.js, TypeScript, MySQL, JWT, Tailwind CSS, Git.</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Expériences Professionnelles</h3>
+                    <div class="project">
+                        <div class="experience-header">
+                            <h4>Employé polyvalent - Bureau vallée (Aix-en-Provence)</h4>
+                            <span class="experience-date">Sept 2022 - Nov 2024</span>
+                        </div>
+                        <p>• Mise en rayon et gestion de caisse.</p>
+                    </div>
+                    <div class="project">
+                        <div class="experience-header">
+                            <h4>Agent d'accueil / Serveur - L'After la Valentine (Marseille)</h4>
+                            <span class="experience-date">Juil 2020 - Août 2021</span>
+                        </div>
+                        <p>• Accueil client, mise en place, préparation et service.</p>
+                    </div>
+                    <div class="project">
+                        <div class="experience-header">
+                            <h4>Agent d'accueil - Pole Emploi (Marignane)</h4>
+                            <span class="experience-date">Juil 2019 - Juin 2020</span>
+                        </div>
+                        <p>• Orientation et renseignement des demandeurs.</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h3 class="section-title">Formations</h3>
+                    <div class="project">
+                        <div class="experience-header">
+                            <h4>Développeur Intégrateur Web (Full Stack)</h4>
+                        </div>
+                        <p><strong>Web@cadémie by Epitech (Marseille)</strong></p>
+                        <p>Conception d'architectures orientées objet (POO), modélisation relationnelle, algorithmie avancée et gestion de projets applicatifs en autonomie.</p>
+                    </div>
+                    <div class="project">
+                        <div class="experience-header">
+                            <h4>Bac STMG - Lycée Val-de-Durance</h4>
+                            <span class="experience-date">2015 - 2018</span>
+                        </div>
+                        <p>Spécialité Management et Gestion des Ressources Humaines.</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>

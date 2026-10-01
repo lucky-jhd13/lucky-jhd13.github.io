@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Studio — Générateur de CV Moderne</title>
+    <link rel="stylesheet" href="style.css?v=20261001_CLEAN">
+</head>
+<body>
+
+    <!-- Header & Action Toolbar -->
+    <header class="app-navbar">
+        <div class="brand-wrapper">
+            <div class="brand-badge" id="brand-badge-icon">CV</div>
+            <div>
+                <h1 class="brand-title">CV Studio Pro</h1>
+                <div class="brand-sub">Éditeur Ergonomique &amp; Export A4</div>
+            </div>
+        </div>
+
+        <div class="nav-actions">
+            <!-- Theme Color Selector -->
+            <div class="color-picker-group" title="Changer la couleur d'accent">
+                <span style="font-size: 11px; font-weight: 700; color: #64748b; margin-right: 4px;">THÈME</span>
+                <span class="color-dot active" data-color="#2563eb" style="background: #2563eb;" title="Bleu Royal"></span>
+                <span class="color-dot" data-color="#0f172a" style="background: #0f172a;" title="Noir / Ardoise"></span>
+                <span class="color-dot" data-color="#059669" style="background: #059669;" title="Vert Émeraude"></span>
+                <span class="color-dot" data-color="#7c3aed" style="background: #7c3aed;" title="Violet Moderne"></span>
+                <span class="color-dot" data-color="#e11d48" style="background: #e11d48;" title="Rouge Cardinal"></span>
+            </div>
+
+            <button type="button" class="btn-nav btn-outline-nav" id="btn-prefill-johad" title="Remplir avec le profil complet">
+                <span>✨ Profil Johad</span>
+            </button>
+
+            <button type="button" class="btn-nav btn-outline-nav" id="btn-reset-form" title="Remettre à zéro">
+                <span>🔄 Réinitialiser</span>
+            </button>
+
+            <button type="button" class="btn-nav btn-accent-nav" onclick="window.print()" title="Imprimer ou enregistrer en PDF">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Télécharger PDF</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Workspace -->
+    <main class="app-container">
+        
+        <!-- Left: Editor Panel -->
+        <aside class="editor-panel">
+            <form id="cv-editor-form" onsubmit="return false;">
+                
+                <!-- Section 1: Profil & Contact -->
+                <div class="editor-section">
+                    <div class="section-head">
+                        <span class="section-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            Informations Personnelles
+                        </span>
+                    </div>
+
+                    <!-- Photo Upload -->
+                    <div class="photo-upload-box">
+                        <img src="../../photo-profil-opt.jpg" alt="Aperçu photo" id="editor-photo-thumb" class="photo-thumb">
+                        <div>
+                            <label for="input-photo-file" class="photo-input-label">📸 Changer la photo</label>
+                            <input type="file" id="input-photo-file" accept="image/*" style="display: none;">
+                            <div style="font-size: 11px; color: #94a3b8; margin-top: 4px;">JPG, PNG (recadré automatiquement)</div>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Prénom</label>
+                            <input type="text" id="input-prenom" class="input-field" value="Johad" placeholder="Ex: Jean">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nom</label>
+                            <input type="text" id="input-nom" class="input-field" value="Abidat" placeholder="Ex: Dupont">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Titre visé / Spécialité</label>
+                        <input type="text" id="input-titre" class="input-field" value="Développeur Full Stack" placeholder="Ex: Développeur Web Full Stack">
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="input-email" class="input-field" value="abidatjohad@gmail.com" placeholder="nom@exemple.com">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Téléphone</label>
+                            <input type="tel" id="input-tel" class="input-field" value="07 49 04 45 95" placeholder="06 12 34 56 78">
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2">
+                        <div class="form-group">
+                            <label class="form-label">Localisation / Mobilité</label>
+                            <input type="text" id="input-ville" class="input-field" value="Marseille / Aix-en-Provence" placeholder="Ex: Paris">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Lien GitHub / Portfolio</label>
+                            <input type="text" id="input-github" class="input-field" value="github.com/lucky-jhd13" placeholder="github.com/pseudo">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Accroche / Profil professionnel</label>
+                        <textarea id="input-bio" class="input-field" rows="3" placeholder="Présentez brièvement vos compétences clés et votre valeur ajoutée...">Développeur Full-Stack rigoureux, concevant des architectures web fiables et maintenables. Autonome sur l'ensemble du cycle de développement : modélisation relationnelle de BDD, création d'API RESTful robustes (Java Spring Boot, PHP, Python) et intégration d'interfaces réactives modernes.</textarea>
+                    </div>
+                </div>
+
+                <!-- Section 2: Expériences -->
+                <div class="editor-section">
+                    <div class="section-head">
+                        <span class="section-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            Expériences &amp; Projets
+                        </span>
+                    </div>
+                    <div id="editor-experiences-list"></div>
+                    <button type="button" class="btn-add-section" onclick="addExperience()">
+                        <span>+ Ajouter une expérience</span>
+                    </button>
+                </div>
+
+                <!-- Section 3: Formations -->
+                <div class="editor-section">
+                    <div class="section-head">
+                        <span class="section-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+                            Formations &amp; Diplômes
+                        </span>
+                    </div>
+                    <div id="editor-formations-list"></div>
+                    <button type="button" class="btn-add-section" onclick="addFormation()">
+                        <span>+ Ajouter une formation</span>
+                    </button>
+                </div>
+
+                <!-- Section 4: Compétences -->
+                <div class="editor-section">
+                    <div class="section-head">
+                        <span class="section-title">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                            Compétences Techniques
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" id="input-new-skill" class="input-field" placeholder="Ex: Spring Boot, Docker, React...">
+                            <button type="button" class="btn-nav btn-outline-nav" onclick="addSkillFromInput()">Ajouter</button>
+                        </div>
+                        <div id="editor-skills-cloud" class="skill-tags-wrapper"></div>
+                    </div>
+                </div>
+
+            </form>
+        </aside>
+
+        <!-- Right: A4 Document Live Preview -->
+        <section class="preview-container">
+            <div class="a4-sheet" id="cv-a4-document">
+                
+                <!-- A4 Header Band -->
+                <div class="cv-header-band">
+                    <div class="cv-avatar-frame">
+                        <img src="../../photo-profil-opt.jpg" alt="Photo CV" id="preview-avatar">
+                    </div>
+                    <div class="cv-header-text">
+                        <h2 class="cv-candidate-name">
+                            <span id="preview-prenom">Johad</span> <span id="preview-nom">Abidat</span>
+                        </h2>
+                        <div class="cv-candidate-title" id="preview-titre">Développeur Full Stack</div>
+                        <div class="cv-quick-contact">
+                            <span class="contact-pill-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                                <span id="preview-email">abidatjohad@gmail.com</span>
+                            </span>
+                            <span class="contact-pill-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                                <span id="preview-tel">07 49 04 45 95</span>
+                            </span>
+                            <span class="contact-pill-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                                <span id="preview-ville">Marseille / Aix</span>
+                            </span>
+                            <span class="contact-pill-item">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                                <span id="preview-github">github.com/lucky-jhd13</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- A4 Body Columns -->
+                <div class="cv-body-grid">
+                    
+                    <!-- Left Sidebar Column -->
+                    <aside class="cv-sidebar-col">
+                        
+                        <div class="cv-block">
+                            <h3 class="cv-block-title">Compétences</h3>
+                            <div class="preview-skill-chips" id="preview-skills-container"></div>
+                        </div>
+
+                        <div class="cv-block">
+                            <h3 class="cv-block-title">Langues</h3>
+                            <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
+                                <div><strong>Français :</strong> Maternelle</div>
+                                <div><strong>Anglais :</strong> B2 (Technique)</div>
+                                <div><strong>Espagnol :</strong> B2</div>
+                            </div>
+                        </div>
+
+                        <div class="cv-block">
+                            <h3 class="cv-block-title">Mobilité</h3>
+                            <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
+                                <div>🚗 Permis B (Véhiculé)</div>
+                                <div>📍 Aix, Marseille, Marignane</div>
+                                <div>⚡ Dispo Immédiate</div>
+                            </div>
+                        </div>
+
+                        <div class="cv-block">
+                            <h3 class="cv-block-title">Soft Skills</h3>
+                            <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.8;">
+                                <div>• Rigueur &amp; Clean Code</div>
+                                <div>• Travail en équipe Agile</div>
+                                <div>• Force de proposition</div>
+                                <div>• Persévérant</div>
+                            </div>
+                        </div>
+
+                    </aside>
+
+                    <!-- Right Main Column -->
+                    <section class="cv-main-col">
+                        
+                        <div class="cv-block">
+                            <h3 class="cv-block-title">Profil &amp; Objectif</h3>
+                            <p class="cv-bio-text" id="preview-bio">
+                                Développeur Full-Stack rigoureux, concevant des architectures web fiables et maintenables. Autonome sur l'ensemble du cycle de développement : modélisation relationnelle de BDD, création d'API RESTful robustes (Java Spring Boot, PHP, Python) et intégration d'interfaces réactives modernes.
+                            </p>
+                        </div>
+
+                        <div class="cv-block">
+                            <h3 class="cv-block-title">Expériences Professionnelles</h3>
+                            <div id="preview-experiences-list"></div>
+                        </div>
+
+                        <div class="cv-block">
+                            <h3 class="cv-block-title">Formations</h3>
+                            <div id="preview-formations-list"></div>
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <script src="script.js?v=20261001_CLEAN"></script>
+</body>
+</html>

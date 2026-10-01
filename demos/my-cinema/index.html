@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CineVerse PRO — Complexe & Programmation Cinéma</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css?v=20261001_V3_RESPONSIVE">
+</head>
+<body>
+
+    <!-- Top Navigation Bar -->
+    <header class="cinema-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <div class="brand-icon-box">
+                    <i class="fa-solid fa-film"></i>
+                </div>
+                <div class="brand-text">
+                    <h1>CineVerse <span class="brand-badge">PRO</span></h1>
+                    <span class="brand-tagline">Complexe Cinématographique</span>
+                </div>
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="#movies-section" class="nav-link active"><i class="fa-solid fa-clapperboard"></i> À l'affiche</a></li>
+                <li><a href="#screenings-section" class="nav-link"><i class="fa-solid fa-ticket"></i> Séances</a></li>
+                <li><a href="#rooms-section" class="nav-link"><i class="fa-solid fa-couch"></i> Salles</a></li>
+                <li><a href="#admin-section" class="nav-link"><i class="fa-solid fa-sliders"></i> Admin</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <div class="nav-search-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" id="global-search-input" class="nav-search-input" placeholder="Chercher un film...">
+                </div>
+
+                <a href="../../index.html" class="btn-nav-portfolio" title="Retour au portfolio">
+                    <i class="fa-solid fa-arrow-left"></i> Portfolio
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Ergonomic Quick App Tabs (Visible on all devices, especially Mobile & Tablet) -->
+    <nav class="quick-app-tabs">
+        <div class="quick-tabs-container">
+            <a href="#movies-section" class="tab-pill-btn active" id="tab-pill-movies">
+                <i class="fa-solid fa-clapperboard"></i> Films (6)
+            </a>
+            <a href="#screenings-section" class="tab-pill-btn" id="tab-pill-screenings">
+                <i class="fa-solid fa-ticket"></i> Séances
+            </a>
+            <a href="#rooms-section" class="tab-pill-btn" id="tab-pill-rooms">
+                <i class="fa-solid fa-couch"></i> Salles
+            </a>
+            <a href="#admin-section" class="tab-pill-btn" id="tab-pill-admin">
+                <i class="fa-solid fa-sliders"></i> Administration
+            </a>
+        </div>
+    </nav>
+
+    <!-- Spotlight Hero Feature -->
+    <section class="spotlight-hero">
+        <div class="spotlight-backdrop"></div>
+        <div class="spotlight-overlay"></div>
+        
+        <div class="spotlight-content">
+            <div class="spotlight-info">
+                <div class="spotlight-pill">
+                    <i class="fa-solid fa-fire"></i> Événement de la semaine
+                </div>
+                <h2 class="spotlight-title">Dune : Deuxième Partie</h2>
+                
+                <div class="spotlight-meta">
+                    <span class="meta-rating"><i class="fa-solid fa-star"></i> 4.9 / 5</span>
+                    <span class="meta-badge">IMAX 4K LASER</span>
+                    <span><i class="fa-regular fa-clock"></i> 166 min</span>
+                    <span><i class="fa-solid fa-tags"></i> Sci-Fi</span>
+                    <span><i class="fa-solid fa-video"></i> Denis Villeneuve</span>
+                </div>
+                
+                <p class="spotlight-synopsis">
+                    Paul Atréides s'unit à Chani et aux Fremen tout en préparant sa revanche contre les conspirateurs qui ont détruit sa famille. Face au destin, il doit prévenir un futur terrible.
+                </p>
+                
+                <div class="spotlight-actions">
+                    <button class="btn-spotlight-primary" onclick="openBookingModal('Dune: Deuxième Partie', 'Salle Dolby 2', '2026-10-02 21:15')">
+                        <i class="fa-solid fa-ticket"></i> Réserver une séance
+                    </button>
+                    <button class="btn-spotlight-secondary" onclick="openDetailsModal(3)">
+                        <i class="fa-solid fa-circle-info"></i> Fiche complète
+                    </button>
+                </div>
+            </div>
+
+            <div class="spotlight-card-preview">
+                <img src="posters/dune2.jpg" alt="Dune 2 Affiche">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Ribbon -->
+    <section class="stats-ribbon">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-icon red"><i class="fa-solid fa-clapperboard"></i></div>
+                <div class="stat-info">
+                    <h3 id="stat-movies-count">6</h3>
+                    <p>Films en diffusion</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-icon blue"><i class="fa-solid fa-chalkboard-user"></i></div>
+                <div class="stat-info">
+                    <h3 id="stat-rooms-count">3</h3>
+                    <p>Salles équipées</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-icon gold"><i class="fa-solid fa-couch"></i></div>
+                <div class="stat-info">
+                    <h3 id="stat-seats-count">680</h3>
+                    <p>Fauteuils club</p>
+                </div>
+            </div>
+
+            <div class="stat-box">
+                <div class="stat-icon emerald"><i class="fa-solid fa-calendar-check"></i></div>
+                <div class="stat-info">
+                    <h3 id="stat-screenings-count">5</h3>
+                    <p>Séances de la semaine</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Layout -->
+    <main class="main-wrapper">
+
+        <!-- SECTION 1 : FILMS À L'AFFICHE -->
+        <section class="section-block" id="movies-section">
+            <div class="section-header">
+                <div>
+                    <div class="section-title-wrap">
+                        <span class="section-indicator"></span>
+                        <h2 class="section-title">Films à l'Affiche</h2>
+                    </div>
+                    <p class="section-subtitle">Programmation cinématographique en cours dans nos salles.</p>
+                </div>
+            </div>
+
+            <!-- Filters & Sorting Bar -->
+            <div class="filter-bar">
+                <div class="filter-pills-scroll" id="genre-filter-pills">
+                    <button class="filter-pill active" data-genre="all">Tous (6)</button>
+                    <button class="filter-pill" data-genre="Sci-Fi">Sci-Fi</button>
+                    <button class="filter-pill" data-genre="Action">Action</button>
+                    <button class="filter-pill" data-genre="Drame">Drame</button>
+                    <button class="filter-pill" data-genre="Crime">Crime</button>
+                </div>
+
+                <div class="sort-group">
+                    <label for="sort-select" class="sort-label"><i class="fa-solid fa-arrow-down-short-wide"></i> Trier :</label>
+                    <select id="sort-select" class="sort-select">
+                        <option value="recent">Plus récents</option>
+                        <option value="duration-desc">Durée (longs)</option>
+                        <option value="duration-asc">Durée (courts)</option>
+                        <option value="title-asc">Titre (A à Z)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Movies Grid Container -->
+            <div id="movies-container" class="movies-grid">
+                <!-- Dynamically rendered via app.js -->
+            </div>
+        </section>
+
+        <!-- SECTION 2 : SÉANCES PROGRAMMÉES (PLACÉ EN HAUT POUR MEILLEURE ERGONOMIE) -->
+        <section class="section-block" id="screenings-section">
+            <div class="section-header">
+                <div>
+                    <div class="section-title-wrap">
+                        <span class="section-indicator"></span>
+                        <h2 class="section-title">Horaires & Séances</h2>
+                    </div>
+                    <p class="section-subtitle">Choisissez votre séance et réservez instantanément votre place numérotée.</p>
+                </div>
+                <a href="#admin-section" onclick="switchAdminTab('tab-screening')" class="btn-spotlight-secondary" style="padding: 7px 14px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-calendar-plus"></i> + Nouvelle séance
+                </a>
+            </div>
+
+            <div id="screenings-container" class="screenings-list">
+                <!-- Dynamically rendered via app.js -->
+            </div>
+        </section>
+
+        <!-- SECTION 3 : GESTION DES SALLES -->
+        <section class="section-block" id="rooms-section">
+            <div class="section-header">
+                <div>
+                    <div class="section-title-wrap">
+                        <span class="section-indicator"></span>
+                        <h2 class="section-title">Nos Salles & Espaces</h2>
+                    </div>
+                    <p class="section-subtitle">Configuration acoustique, projecteurs laser et taux de remplissage.</p>
+                </div>
+                <a href="#admin-section" onclick="switchAdminTab('tab-room')" class="btn-spotlight-secondary" style="padding: 7px 14px; font-size: 0.8rem;">
+                    <i class="fa-solid fa-plus"></i> + Ajouter une salle
+                </a>
+            </div>
+
+            <div id="rooms-container" class="rooms-grid">
+                <!-- Dynamically rendered via app.js -->
+            </div>
+        </section>
+
+        <!-- SECTION 4 : CONSOLE D'ADMINISTRATION -->
+        <section class="section-block" id="admin-section">
+            <div class="section-header">
+                <div>
+                    <div class="section-title-wrap">
+                        <span class="section-indicator"></span>
+                        <h2 class="section-title">Console d'Administration</h2>
+                    </div>
+                    <p class="section-subtitle">Gestion du catalogue, ouverture de salles et programmation.</p>
+                </div>
+            </div>
+
+            <div class="admin-card">
+                <div class="admin-tabs">
+                    <button class="admin-tab active" id="btn-tab-movie" onclick="switchAdminTab('tab-movie')">
+                        <i class="fa-solid fa-film"></i> Ajouter un Film
+                    </button>
+                    <button class="admin-tab" id="btn-tab-screening" onclick="switchAdminTab('tab-screening')">
+                        <i class="fa-solid fa-calendar-plus"></i> Programmer une Séance
+                    </button>
+                    <button class="admin-tab" id="btn-tab-room" onclick="switchAdminTab('tab-room')">
+                        <i class="fa-solid fa-couch"></i> Créer une Salle
+                    </button>
+                </div>
+
+                <!-- Form 1: Ajouter un Film -->
+                <div class="admin-form-pane active" id="tab-movie">
+                    <form id="add-movie-form">
+                        <div class="form-grid-2">
+                            <div class="form-group">
+                                <label for="title">Titre de l'œuvre</label>
+                                <input type="text" id="title" class="form-input" placeholder="ex: Gladiator II" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="director">Réalisateur</label>
+                                <input type="text" id="director" class="form-input" placeholder="ex: Ridley Scott" required>
+                            </div>
+                        </div>
+
+                        <div class="form-grid-3">
+                            <div class="form-group">
+                                <label for="duration">Durée (minutes)</label>
+                                <input type="number" id="duration" class="form-input" placeholder="ex: 148" min="30" max="300" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="release_year">Année</label>
+                                <input type="number" id="release_year" class="form-input" placeholder="ex: 2024" min="1950" max="2030" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="genre">Genre</label>
+                                <select id="genre" class="form-select" required>
+                                    <option value="Sci-Fi / Action">Sci-Fi / Action</option>
+                                    <option value="Action / Crime">Action / Crime</option>
+                                    <option value="Drame / Historique">Drame / Historique</option>
+                                    <option value="Crime / Drame">Crime / Drame</option>
+                                    <option value="Thriller / Mystère">Thriller / Mystère</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group" style="margin-bottom: 20px;">
+                            <label for="poster-select">Affiche officielle</label>
+                            <select id="poster-select" class="form-select">
+                                <option value="posters/dune2.jpg">Dune 2</option>
+                                <option value="posters/inception.jpg">Inception</option>
+                                <option value="posters/interstellar.jpg">Interstellar</option>
+                                <option value="posters/oppenheimer.jpg">Oppenheimer</option>
+                                <option value="posters/darkknight.jpg">The Dark Knight</option>
+                                <option value="posters/pulpfiction.jpg">Pulp Fiction</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-form-submit">
+                            <i class="fa-solid fa-check"></i> Enregistrer le film
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Form 2: Programmer une Séance -->
+                <div class="admin-form-pane" id="tab-screening">
+                    <form id="add-screening-form">
+                        <div class="form-grid-3">
+                            <div class="form-group">
+                                <label for="screening-movie-select">Film</label>
+                                <select id="screening-movie-select" class="form-select" required>
+                                    <option value="">Sélectionner un film...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="screening-room-select">Salle</label>
+                                <select id="screening-room-select" class="form-select" required>
+                                    <option value="">Sélectionner une salle...</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="screening-date">Date & Heure</label>
+                                <input type="datetime-local" id="screening-date" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-form-submit">
+                            <i class="fa-solid fa-calendar-check"></i> Programmer la séance
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Form 3: Créer une Salle -->
+                <div class="admin-form-pane" id="tab-room">
+                    <form id="add-room-form">
+                        <div class="form-grid-3">
+                            <div class="form-group">
+                                <label for="room-name">Nom de la salle</label>
+                                <input type="text" id="room-name" class="form-input" placeholder="ex: Salle 4DX" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="room-capacity">Capacité (sièges)</label>
+                                <input type="number" id="room-capacity" class="form-input" placeholder="ex: 180" min="20" max="600" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="room-type">Technologie</label>
+                                <select id="room-type" class="form-select" required>
+                                    <option value="IMAX">IMAX Laser</option>
+                                    <option value="3D">Dolby Cinema 3D</option>
+                                    <option value="Standard">Numérique Standard 4K</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn-form-submit">
+                            <i class="fa-solid fa-couch"></i> Créer la salle
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="cinema-footer">
+        <div class="footer-container">
+            <div>
+                <p><strong>CineVerse PRO</strong> — Développé par <strong>Johad Abidat</strong> (Epitech <em>My_Cinema</em>).</p>
+                <p style="font-size: 0.72rem; margin-top: 3px; color: var(--text-subtle);">Architecture Full-Stack PHP & MySQL • Démo interactive optimisée pour le portfolio.</p>
+            </div>
+            <div>
+                <a href="../../index.html" class="btn-nav-portfolio">
+                    <i class="fa-solid fa-arrow-left"></i> Retour au Portfolio
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE MODAL (Details & Seat Reservation) -->
+    <div class="cinema-modal-backdrop" id="cinema-modal-backdrop" onclick="closeModalOnBackdrop(event)">
+        <div class="cinema-modal">
+            <button class="modal-close-btn" onclick="closeCinemaModal()" aria-label="Fermer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-header-banner">
+                <img id="modal-banner-img" src="posters/cinema-hero-bg.jpg" alt="Cinema Banner">
+                <div class="modal-header-gradient"></div>
+            </div>
+
+            <div class="modal-body" id="modal-body-content">
+                <!-- Injected dynamically via app.js -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications Container -->
+    <div id="toast-container"></div>
+
+    <script src="app.js?v=20261001_V3_RESPONSIVE"></script>
+</body>
+</html>

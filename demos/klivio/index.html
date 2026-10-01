@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Klivio — Plateforme de Formations en Ligne</title>
+    <link rel="stylesheet" href="styles.css?v=20261001_V2_RESPONSIVE">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header & Navigation Bar -->
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="nav_brand">
+                <img src="resources/ressources/logo.png" alt="Klivio Logo" class="nav_logo">
+            </a>
+
+            <ul class="nav_links">
+                <li><a href="#formations-populaires" class="nav_link">Populaires</a></li>
+                <li><a href="#formations-recentes" class="nav_link">Récents</a></li>
+                <li><a href="#avantages" class="nav_link">Avantages</a></li>
+                <li><a href="#formateur" class="nav_link">Devenir Formateur</a></li>
+            </ul>
+
+            <div class="nav_recherche">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" placeholder="Rechercher une formation..." aria-label="Rechercher">
+            </div>
+
+            <div class="nav_buttons">
+                <button class="btn-connexion" type="button">Connexion</button>
+                <button class="btn-inscription" type="button">Inscription</button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="banierre">
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fa-solid fa-graduation-cap"></i>
+                Plateforme d'Apprentissage Certifiée
+            </div>
+
+            <h1 class="titre-hero">
+                Klivio, l'allié de votre <span>progression</span>
+            </h1>
+            
+            <p class="sous-titre-hero">
+                Les meilleures formations en ligne sur le développement personnel, la communication et le leadership animées par des experts reconnus.
+            </p>
+            
+            <div class="hero-actions">
+                <a href="#formations-populaires" class="btn-hero-primary">Explorer les cours</a>
+                <a href="#avantages" class="btn-hero-secondary">En savoir plus</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Ribbon -->
+    <section class="stats-ribbon">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <h4>+250</h4>
+                <p>Formations Disponibles</p>
+            </div>
+            <div class="stat-item">
+                <h4>98%</h4>
+                <p>Taux de Satisfaction</p>
+            </div>
+            <div class="stat-item">
+                <h4>15 000+</h4>
+                <p>Apprenants Actifs</p>
+            </div>
+            <div class="stat-item">
+                <h4>24h / 7j</h4>
+                <p>Accès Illimité à Vie</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1 : Formations Populaires -->
+    <section class="section-populaires" id="formations-populaires">
+        <div class="container">
+            <div class="section-head-wrap">
+                <div>
+                    <h2 class="titre-section">Les formations populaires</h2>
+                    <p class="sous-titre-section">Les programmes les plus plébiscités par nos apprenants ce mois-ci.</p>
+                </div>
+            </div>
+            
+            <div class="grille-formations">
+
+                <!-- Course 1: Parler en public -->
+                <article class="carte">
+                    <div class="carte-image-wrap">
+                        <img src="resources/courses/course-speech.jpg" alt="Parler en public">
+                        <span class="carte-badge-top">Top Vente</span>
+                        <span class="prix-tag">15,99 € <span class="prix-barre">90 €</span></span>
+                    </div>
+                    
+                    <div class="carte-contenu">
+                        <div>
+                            <h3 class="carte-titre">Parler en public avec aisance</h3>
+                            <p class="carte-auteur">Sonia Lefevre • Coach Prise de Parole</p>
+                            
+                            <div class="carte-avis">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <span class="carte-note-text">5.0 (142 avis)</span>
+                            </div>
+                        </div>
+                        <p class="carte-desc">Gagnez en charisme et captivez votre auditoire en toutes circonstances professionnelles.</p>
+                    </div>
+                </article>
+
+                <!-- Course 2: Gérer le stress -->
+                <article class="carte">
+                    <div class="carte-image-wrap">
+                        <img src="resources/courses/course-stress.jpg" alt="Gérer le stress">
+                        <span class="carte-badge-top">Recommandé</span>
+                        <span class="prix-tag">15,99 € <span class="prix-barre">90 €</span></span>
+                    </div>
+                    
+                    <div class="carte-contenu">
+                        <div>
+                            <h3 class="carte-titre">Gérer le stress au quotidien</h3>
+                            <p class="carte-auteur">Lucie Garnier • Psychologue &amp; Formatrice</p>
+                            
+                            <div class="carte-avis">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star-half-stroke"></i>
+                                <span class="carte-note-text">4.8 (98 avis)</span>
+                            </div>
+                        </div>
+                        <p class="carte-desc">Apprenez à rester serein, concentré et résilient face aux défis du quotidien.</p>
+                    </div>
+                </article>
+                            
+                <!-- Course 3: Travailler en équipe -->
+                <article class="carte">
+                    <div class="carte-image-wrap">
+                        <img src="resources/courses/course-team.jpg" alt="Travailler en équipe">
+                        <span class="carte-badge-top">Collectif</span>
+                        <span class="prix-tag">15,99 € <span class="prix-barre">90 €</span></span>
+                    </div>
+                    
+                    <div class="carte-contenu">
+                        <div>
+                            <h3 class="carte-titre">Travailler en équipe &amp; Synergie</h3>
+                            <p class="carte-auteur">David Moreau • Facilitateur Agile</p>
+                            
+                            <div class="carte-avis">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <span class="carte-note-text">4.9 (115 avis)</span>
+                            </div>
+                        </div>
+                        <p class="carte-desc">Collaborez efficacement en équipe hybride ou à distance avec bienveillance.</p>
+                    </div>
+                </article>
+                
+                <!-- Course 4: Gérer son temps -->
+                <article class="carte">
+                    <div class="carte-image-wrap">
+                        <img src="resources/courses/course-decision.jpg" alt="Gérer son temps">
+                        <span class="carte-badge-top">Productivité</span>
+                        <span class="prix-tag">15,99 € <span class="prix-barre">90 €</span></span>
+                    </div>
+                    
+                    <div class="carte-contenu">
+                        <div>
+                            <h3 class="carte-titre">Gestion du temps &amp; Productivité</h3>
+                            <p class="carte-auteur">Claire Dumas • Coach en Organisation</p>
+                            
+                            <div class="carte-avis">
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-solid fa-star"></i>
+                                <i class="fa-regular fa-star"></i>
+                                <span class="carte-note-text">4.7 (76 avis)</span>
+                            </div>
+                        </div>
+                        <p class="carte-desc">Optimisez vos journées, priorisez l'essentiel et éliminez la procrastination.</p>
+                    </div>
+                </article>
+
+            </div>
+                
+            <div class="bouton-container">
+                <button class="btn-sombre">Voir tout le catalogue (250+ cours)</button>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Section 2 : Formations Récentes -->
+    <section class="section-recentes" id="formations-recentes">
+        <div class="container">
+            <div class="section-head-wrap">
+                <div>
+                    <h2 class="titre-section titre-blanc">Les nouveautés Klivio</h2>
+                    <p class="sous-titre-section" style="color: #94a3b8;">Des programmes récents développés par nos formateurs certifiés.</p>
+                </div>
+            </div>
+            
+            <div class="grille-formations">
+
+                <!-- Course 5: Mieux communiquer -->
+                <article class="carte">
+                    <div class="carte-image-wrap">
+                        <img src="resources/courses/course-communication.jpg" alt="Mieux communiquer">
+                        <span class="carte-badge-top">Nouveau</span>
+                        <span class="prix-tag">15,99 € <span class="prix-barre">90 €</span></span>
+                    </div>
+                    <div class="carte-contenu">
+                        <div>
+                            <h3 class="carte-titre">Communication Non-Violente</h3>
+                            <p class="carte-auteur">Julien Hamel • Médiateur &amp; Formateur</p>
+                            <div class="carte-avis">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <span class="carte-note-text">5.0 (34 avis)</span>
+                            </div>
+                        </div>
+                        <p class="carte-desc">Améliorez vos échanges interpersonnels et désamorcez les conflits professionnels.</p>
+                    </div>
+                </article>
+
+                <!-- Course 6: Maîtriser ses émotions -->
+                <article class="carte">
+                    <div class="carte-image-wrap">
+                        <img src="resources/courses/course-emotions.jpg" alt="Maîtriser ses émotions">
+                        <span class="carte-badge-top">Nouveau</span>
+                        <span class="prix-tag">15,99 € <span class="prix-barre">90 €</span></span>
+                    </div>
+                    <div class="carte-contenu">
+                        <div>
+                            <h3 class="carte-titre">Intelligence Émotionnelle</h3>
+                            <p class="carte-auteur">Amel Benali • Psychologue du Travail</p>
+                            <div class="carte-avis">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <span class="carte-note-text">4.9 (52 avis)</span>
+                            </div>
+                        </div>
+                        <p class="carte-desc">Comprenez et mobilisez vos émotions comme un puissant levier d'action.</p>
+                    </div>
+                </article>
+                
+                <!-- Course 7: Résoudre les problèmes -->
+                <article class="carte">
+                    <div class="carte-image-wrap">
+                        <img src="resources/courses/course-problems.jpg" alt="Résoudre les problèmes">
+                        <span class="carte-badge-top">Nouveau</span>
+                        <span class="prix-tag">15,99 € <span class="prix-barre">90 €</span></span>
+                    </div>
+                    <div class="carte-contenu">
+                        <div>
+                            <h3 class="carte-titre">Résolution de Problèmes</h3>
+                            <p class="carte-auteur">Thomas Rivière • Consultant Stratégie</p>
+                            <div class="carte-avis">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                <span class="carte-note-text">4.8 (29 avis)</span>
+                            </div>
+                        </div>
+                        <p class="carte-desc">Méthodes concrètes pour analyser, structurer et trouver des solutions pérennes.</p>
+                    </div>
+                </article>
+                
+                <!-- Course 8: Leadership positif -->
+                <article class="carte">
+                    <div class="carte-image-wrap">
+                        <img src="resources/courses/course-leadership.jpg" alt="Leadership positif">
+                        <span class="carte-badge-top">Nouveau</span>
+                        <span class="prix-tag">15,99 € <span class="prix-barre">90 €</span></span>
+                    </div>
+                    <div class="carte-contenu">
+                        <div>
+                            <h3 class="carte-titre">Leadership &amp; Management Positif</h3>
+                            <p class="carte-auteur">Marc Nguyen • Executive Coach</p>
+                            <div class="carte-avis">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                <span class="carte-note-text">5.0 (61 avis)</span>
+                            </div>
+                        </div>
+                        <p class="carte-desc">Inspirez, motivez et fédérez vos équipes vers des résultats collectifs durables.</p>
+                    </div>
+                </article>
+
+            </div>
+                
+            <div class="bouton-container">
+                <button class="btn-blanc">Explorer toutes les nouveautés</button>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Section 3 : Témoignages & Avis -->
+    <section class="section-avis">
+        <div class="container">
+            <h2 class="titre-section titre-centre">Ce que disent nos apprenants</h2>
+            
+            <div class="conteneur-temoignages">
+                
+                <div class="avis-card">
+                    <img src="resources/ressources/juliette.png" alt="Juliette" class="avis-photo">
+                    <h3 class="avis-nom">Juliette M.</h3>
+                    <div class="avis-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="avis-texte">
+                        "J'ai trouvé le parcours extrêmement bien structuré : formats vidéo concis, quiz de mise en application directe. L'interface est fluide et la progression donne envie d'aller jusqu'au bout !"
+                    </p>
+                </div>
+
+                <div class="avis-card">
+                    <img src="resources/ressources/camille.png" alt="Camille" class="avis-photo">
+                    <h3 class="avis-nom">Camille D.</h3>
+                    <div class="avis-stars">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="avis-texte">
+                        "Un équilibre parfait entre concepts théoriques et exercices concrets. Le support des formateurs est irréprochable et les certifications obtenues ont valorisé mon profil LinkedIn."
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4 : Avantages Klivio -->
+    <section class="section-avantages" id="avantages">
+        <div class="container">
+            <div class="conteneur-split">
+                
+                <div class="colonne-texte">
+                    <h2 class="titre-section align-gauche">Les avantages Klivio</h2>
+                    
+                    <ul class="liste-avantages">
+                        <li>
+                            <span class="icone-verte"><i class="fa-solid fa-arrow-trend-up"></i></span>
+                            <span class="texte-avantage"><strong>Suivi intelligent de progression :</strong> Visualisez vos avancées et jalons certifiants.</span>
+                        </li>
+                        <li>
+                            <span class="icone-verte"><i class="fa-solid fa-pen-ruler"></i></span>
+                            <span class="texte-avantage"><strong>Exercices pratiques &amp; QCM :</strong> Validez vos acquis à chaque étape clé.</span>
+                        </li>
+                        <li>
+                            <span class="icone-verte"><i class="fa-solid fa-download"></i></span>
+                            <span class="texte-avantage"><strong>Ressources téléchargeables :</strong> Fiches mémo, synthèses PDF et supports de cours.</span>
+                        </li>
+                        <li>
+                            <span class="icone-verte"><i class="fa-solid fa-medal"></i></span>
+                            <span class="texte-avantage"><strong>Contenus certifiés :</strong> Cursus validés par des experts et professionnels du secteur.</span>
+                        </li>
+                        <li>
+                            <span class="icone-verte"><i class="fa-solid fa-clock"></i></span>
+                            <span class="texte-avantage"><strong>Apprentissage 100% autonome :</strong> Formez-vous à votre rythme, 24h/24 et 7j/7.</span>
+                        </li>
+                        <li>
+                            <span class="icone-verte"><i class="fa-regular fa-comments"></i></span>
+                            <span class="texte-avantage"><strong>Communauté active :</strong> Espaces d'échanges dédiés pour poser vos questions aux mentors.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="colonne-image">
+                    <img src="resources/ressources/avantages.png" alt="Étudiante apprenant sur Klivio" class="img-avantages">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5 : Devenir Formateur -->
+    <section class="section-instructeur" id="formateur">
+        <div class="container">
+            <div class="conteneur-split">
+                
+                <div class="colonne-image">
+                    <img src="resources/ressources/become-author.png" alt="Devenir formateur sur Klivio" class="img-instructeur">
+                </div>
+
+                <div class="colonne-texte" style="padding-left: 20px;">
+                    <h2 class="titre-sombre">Créez et vendez vos cours avec Klivio</h2>
+                    
+                    <ul class="liste-avantages">
+                        <li>
+                            <span class="icone-sombre"><i class="fa-solid fa-user-tie"></i></span>
+                            <span class="texte-sombre"><strong>Rémunération attractive :</strong> Commission juste et transparente sur chaque vente réalisée.</span>
+                        </li>
+                        <li>
+                            <span class="icone-sombre"><i class="fa-solid fa-bullhorn"></i></span>
+                            <span class="texte-sombre"><strong>Visibilité maximale :</strong> Mise en avant de vos formations auprès de milliers d'apprenants.</span>
+                        </li>
+                        <li>
+                            <span class="icone-sombre"><i class="fa-solid fa-sliders"></i></span>
+                            <span class="texte-sombre"><strong>Contrôle total :</strong> Fixez librement vos prix, vos modules et vos ressources pédagogiques.</span>
+                        </li>
+                        <li>
+                            <span class="icone-sombre"><i class="fa-solid fa-shield-halved"></i></span>
+                            <span class="texte-sombre"><strong>Protection de la propriété intellectuelle :</strong> Vous conservez 100% de vos droits d'auteur.</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 6 : À propos Split -->
+    <section class="section-split">
+        <div class="split-texte">
+            <h2 class="titre-split">À propos de Klivio</h2>
+            <p>
+                Chez Klivio, nous défendons une vision moderne et émancipatrice de la formation continue. 
+                Notre mission est d'offrir des contenus pédagogiques de premier rang, créés par des formateurs passionnés, 
+                à des tarifs transparents et accessibles à tous.
+            </p>
+            <br>
+            <p>
+                Favorisant une flexibilité absolue, notre plateforme s'adapte à vos contraintes professionnelles et personnelles 
+                pour faire de chaque heure investie un tremplin pour votre carrière.
+            </p>
+        </div>
+        <div class="split-logo">
+            <img src="resources/ressources/logo.png" alt="Klivio Grand Logo" class="grand-logo">
+        </div>
+    </section>
+
+    <!-- Section 7 : Contact -->
+    <section class="section-contact">
+        <div class="container-contact">
+            <h2 class="titre-contact">Une question ? Écrivez-nous</h2>
+            
+            <form class="form-sombre" onsubmit="return false;">
+                <div class="ligne-champs">
+                    <input type="text" placeholder="Votre nom" class="champ-noir" required>
+                    <input type="email" placeholder="Votre email" class="champ-noir" required>
+                </div>
+                
+                <textarea placeholder="Comment pouvons-nous vous aider ?" class="zone-noir" rows="4" required></textarea>
+                
+                <button type="submit" class="btn-vert-contact">Envoyer le message</button>
+            </form>
+        </div>
+    </section>
+
+    <div class="barre-separation"></div>
+
+    <!-- Footer -->
+    <footer class="footer-final">
+        <div class="container footer-grid">
+            
+            <div class="col-logo">
+                <img src="resources/ressources/logo.png" alt="Klivio" class="logo-footer">
+                <p>La plateforme e-learning de référence pour monter en compétences en autonomie.</p>
+            </div>
+
+            <div class="col-liens">
+                <h4>Plateforme</h4>
+                <ul>
+                    <li><a href="#formations-populaires">Formations populaires</a></li>
+                    <li><a href="#formations-recentes">Nouveautés</a></li>
+                    <li><a href="#avantages">Pourquoi Klivio ?</a></li>
+                    <li><a href="#formateur">Devenir Formateur</a></li>
+                </ul>
+            </div>
+
+            <div class="col-coords">
+                <h4>Coordonnées</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot"></i> 1 place de la République, 75003 Paris</li>
+                    <li><i class="fa-solid fa-phone"></i> 01 02 03 04 05</li>
+                    <li><i class="fa-solid fa-envelope"></i> contact@klivio.fr</li>
+                </ul>
+            </div>
+
+            <div class="col-liens">
+                <h4>Mentions</h4>
+                <ul>
+                    <li><a href="#">Conditions Générales</a></li>
+                    <li><a href="#">Confidentialité &amp; Cookies</a></li>
+                    <li><a href="#">Mentions Légales</a></li>
+                    <li><a href="#">FAQ &amp; Support</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="footer-ligne-fine"></div>
+
+        <div class="container footer-bas">
+            <p>© Klivio — Intégration par Johad Abidat</p>
+            <div class="socials">
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
