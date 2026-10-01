@@ -309,14 +309,13 @@ body {
 
 .project-card {
     position: sticky;
-    top: 10vh;
+    top: 8vh;
     width: 100%;
-    max-height: 86vh;
     background: #0d1117;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 36px;
     padding: clamp(22px, 3.8vw, 42px);
-    margin-bottom: 20vh;
+    margin-bottom: 14vh;
     display: flex;
     flex-direction: column;
     box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
@@ -477,3 +476,56 @@ body {
     font-size: 13px;
     font-family: var(--font-mono);
 }
+
+.project-preview-trigger img {
+    object-position: center;
+}
+
+.project-preview-trigger img.project-img-stadium {
+    object-position: 50% 65%;
+}
+
+/* ---------------- Mobile Responsive Project Cards ---------------- */
+@media (max-width: 768px) {
+    .projects-section {
+        padding-bottom: 40px;
+    }
+
+    .project-card {
+        position: relative !important;
+        top: 0 !important;
+        max-height: none !important;
+        height: auto !important;
+        margin-bottom: 32px !important;
+        padding: 24px 18px !important;
+        border-radius: 24px !important;
+        overflow: visible !important;
+    }
+
+    .project-card:last-child {
+        margin-bottom: 0 !important;
+    }
+
+    .project-preview-trigger {
+        margin-top: 20px !important;
+        border-radius: 16px !important;
+        display: block !important;
+        width: 100% !important;
+        max-height: 240px !important;
+        overflow: hidden !important;
+    }
+
+    .project-preview-trigger img {
+        width: 100% !important;
+        max-height: 240px !important;
+        height: 200px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        display: block !important;
+    }
+
+    .project-preview-trigger img.project-img-stadium {
+        object-position: 50% 65% !important;
+    }
+}
+

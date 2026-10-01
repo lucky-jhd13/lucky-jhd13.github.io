@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             direction: 'vertical',
             smooth: true,
         });
+        window.lenis = lenis;
 
         function raf(time) {
             lenis.raf(time);
