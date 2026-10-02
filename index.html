@@ -47,7 +47,7 @@
     </script>
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="portfolio.css">
+    <link rel="stylesheet" href="portfolio.css?v=2">
 
     <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -137,11 +137,23 @@
         <a href="#work" class="py-2 text-base font-bold uppercase tracking-wider text-apple-black">Portfolio</a>
         <a href="#services" class="py-2 text-base font-bold uppercase tracking-wider text-apple-black">Freelance & Tarifs</a>
         <a href="#contact" class="py-2 text-base font-bold uppercase tracking-wider text-apple-black">Contact</a>
-        <a href="cv.html" target="_blank" class="py-3 mt-2 rounded-xl bg-black/5 font-bold uppercase text-xs tracking-wider text-apple-black">📄 Voir mon CV</a>
+        <div class="flex items-center justify-center gap-4 py-2 border-t border-black/5 text-xs font-mono font-bold text-apple-grey">
+            <a href="https://www.linkedin.com/in/johad-abidat-7305743a7/" target="_blank" rel="noopener noreferrer" class="hover:text-apple-black">LinkedIn</a>
+            <span>•</span>
+            <a href="https://github.com/lucky-jhd13" target="_blank" rel="noopener noreferrer" class="hover:text-apple-black">GitHub</a>
+        </div>
+        <a href="cv.html" target="_blank" class="py-3 mt-1 rounded-xl bg-black/5 font-bold uppercase text-xs tracking-wider text-apple-black">📄 Voir mon CV</a>
     </div>
 
     <!-- Fixed Desktop Social Sidebar -->
     <div class="fixed left-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center gap-6 z-40 text-apple-grey">
+        <a href="https://www.linkedin.com/in/johad-abidat-7305743a7/" target="_blank" rel="noopener noreferrer" class="interactive hover:text-apple-black transition-all hover:scale-110" data-cursor="LinkedIn" title="LinkedIn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+        </a>
         <a href="https://github.com/lucky-jhd13" target="_blank" rel="noopener noreferrer" class="interactive hover:text-apple-black transition-all hover:scale-110" data-cursor="Github" title="GitHub">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -172,7 +184,7 @@
                 <!-- Availability Badge -->
                 <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 text-xs font-mono font-bold uppercase tracking-wider mb-6">
                     <span class="pulse-indicator"></span>
-                    <span>Disponible Immédiatement // Développeur Full Stack</span>
+                    <span>Disponible Immédiatement // CDI, CDD &amp; Freelance</span>
                 </div>
 
                 <!-- Main Titles -->
@@ -266,7 +278,7 @@
                         <div class="mt-8 pt-4 border-t border-black/5 flex flex-wrap gap-4 text-xs font-mono text-apple-grey">
                             <span>📍 Marseille / Aix-en-Provence</span>
                             <span>🚗 Permis B (Véhiculé)</span>
-                            <span>⚡ Disponible immédiatement</span>
+                            <span>⚡ Disponible immédiatement (CDI / Freelance)</span>
                         </div>
                     </div>
 
@@ -349,7 +361,7 @@
                             <h4 class="text-xs uppercase tracking-widest font-mono font-bold text-apple-grey mb-4">Formation &amp; Méthode</h4>
                             <div class="mb-4">
                                 <p class="text-sm font-bold text-apple-black">Web@cadémie by Epitech (Marseille)</p>
-                                <p class="text-xs text-apple-grey font-mono">Développeur Intégrateur Web (Full Stack)</p>
+                                <p class="text-xs text-apple-grey font-mono">Développeur Intégrateur Web (Full Stack) • 2025 - 2027</p>
                             </div>
                             <p class="text-apple-grey text-xs mb-3 leading-relaxed">
                                 Pédagogie active par projets intensifs, autonomie, résolution de problèmes complexes et esprit d'équipe.
@@ -965,6 +977,21 @@
                                 </div>
                             </a>
 
+                            <!-- LinkedIn -->
+                            <a href="https://www.linkedin.com/in/johad-abidat-7305743a7/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-4 group interactive" data-cursor="LinkedIn">
+                                <div class="w-12 h-12 rounded-full bg-apple-accent/10 flex items-center justify-center group-hover:bg-apple-accent group-hover:text-white transition-colors duration-300">
+                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                                        <rect x="2" y="9" width="4" height="12" />
+                                        <circle cx="4" cy="4" r="2" />
+                                    </svg>
+                                </div>
+                                <div>
+                                    <p class="text-[11px] text-apple-grey uppercase font-bold tracking-widest font-mono">LinkedIn</p>
+                                    <p class="text-base sm:text-lg font-bold">johad-abidat</p>
+                                </div>
+                            </a>
+
                             <!-- Location -->
                             <div class="flex items-center gap-4 group interactive" data-cursor="Map">
                                 <div class="w-12 h-12 rounded-full bg-apple-accent/10 flex items-center justify-center group-hover:bg-apple-accent group-hover:text-white transition-colors duration-300">
@@ -998,26 +1025,34 @@
                         </div>
 
                         <form id="contact-form" class="space-y-5 relative z-10">
+                            <!-- Web3Forms Access Key -->
+                            <input type="hidden" name="access_key" value="febd7d87-4f39-473d-af48-aaccd2fdb5a6">
+                            <input type="hidden" name="from_name" value="Portfolio — Johad Abidat">
+                            <!-- Anti-spam Honeypot -->
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
                             <div class="grid sm:grid-cols-2 gap-4">
                                 <div>
                                     <label for="name" class="block text-xs font-bold uppercase tracking-widest text-apple-grey font-mono mb-2 ml-1">Nom</label>
-                                    <input type="text" id="name" required placeholder="Votre nom" class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none">
+                                    <input type="text" id="name" name="name" required placeholder="Votre nom" class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none">
                                 </div>
                                 <div>
                                     <label for="email" class="block text-xs font-bold uppercase tracking-widest text-apple-grey font-mono mb-2 ml-1">Email</label>
-                                    <input type="email" id="email" required placeholder="nom@entreprise.com" class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none">
+                                    <input type="email" id="email" name="email" required placeholder="nom@entreprise.com" class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none">
                                 </div>
                             </div>
 
                             <div>
                                 <label for="subject" class="block text-xs font-bold uppercase tracking-widest text-apple-grey font-mono mb-2 ml-1">Sujet</label>
-                                <input type="text" id="subject" required placeholder="Opportunité / Projet" class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none">
+                                <input type="text" id="subject" name="subject" required placeholder="Opportunité / Projet" class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none">
                             </div>
 
                             <div>
                                 <label for="message" class="block text-xs font-bold uppercase tracking-widest text-apple-grey font-mono mb-2 ml-1">Message</label>
-                                <textarea id="message" rows="4" required placeholder="Votre message..." class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none resize-none"></textarea>
+                                <textarea id="message" name="message" rows="4" required placeholder="Votre message..." class="w-full bg-[#f5f5f7] border-none rounded-2xl px-5 py-3.5 focus:ring-2 focus:ring-apple-accent transition-all text-sm outline-none resize-none"></textarea>
                             </div>
+
+                            <div id="form-error" class="hidden text-xs font-mono text-red-500 text-center font-bold"></div>
 
                             <button type="submit" class="w-full bg-apple-black text-white font-mono font-bold py-4 rounded-2xl hover:bg-apple-accent transition-all duration-300 uppercase tracking-widest text-xs interactive shadow-lg shadow-black/10" data-cursor="Send">
                                 Envoyer le message
@@ -1042,6 +1077,8 @@
             </div>
             <div class="flex items-center gap-4 text-xs font-mono">
                 <a href="https://github.com/lucky-jhd13" target="_blank" class="hover:text-apple-black">GitHub</a>
+                <span>•</span>
+                <a href="https://www.linkedin.com/in/johad-abidat-7305743a7/" target="_blank" class="hover:text-apple-black">LinkedIn</a>
                 <span>•</span>
                 <a href="cv.html" target="_blank" class="hover:text-apple-black">CV</a>
             </div>
@@ -1077,7 +1114,7 @@
     </div>
 
     <!-- Main JS -->
-    <script src="portfolio.js"></script>
+    <script src="portfolio.js?v=2"></script>
 </body>
 
 </html>

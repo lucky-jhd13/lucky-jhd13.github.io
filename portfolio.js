@@ -28,44 +28,54 @@ document.addEventListener('DOMContentLoaded', () => {
     const loaderProgress = document.getElementById('loader-progress');
     const loaderWords = document.querySelectorAll('.loader-word');
 
-    // Reveal words
-    loaderWords.forEach((word, idx) => {
-        setTimeout(() => {
-            word.style.transition = 'transform 0.8s cubic-bezier(0.16, 1, 0.3, 1)';
-            word.style.transform = 'translateY(0%)';
-        }, 150 + idx * 150);
-    });
+    const alreadyVisited = sessionStorage.getItem('ja_portfolio_visited');
 
-    let count = 0;
-    const countInterval = setInterval(() => {
-        count += Math.floor(Math.random() * 8) + 3;
-        if (count >= 100) {
-            count = 100;
-            clearInterval(countInterval);
-            if (loaderCounter) loaderCounter.innerText = '100';
-            if (loaderProgress) loaderProgress.style.width = '100%';
-
-            setTimeout(() => {
-                if (preloader) {
-                    preloader.classList.add('loaded');
-                }
-                // Trigger hero entry animations if GSAP is available
-                if (typeof gsap !== 'undefined') {
-                    gsap.fromTo('.img-cv-container', 
-                        { scale: 0.95, opacity: 0 }, 
-                        { scale: 1, opacity: 1, duration: 0.8, ease: 'power2.out', clearProps: 'opacity,scale' }
-                    );
-                    gsap.fromTo('.cta-circle', 
-                        { scale: 0.5, opacity: 0 }, 
-                        { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.5)', clearProps: 'opacity,scale', delay: 0.2 }
-                    );
-                }
-            }, 300);
-        } else {
-            if (loaderCounter) loaderCounter.innerText = count;
-            if (loaderProgress) loaderProgress.style.width = `${count}%`;
+    function finishPreloader() {
+        if (preloader) {
+            preloader.classList.add('loaded');
         }
-    }, 45);
+        if (typeof gsap !== 'undefined') {
+            gsap.fromTo('.img-cv-container', 
+                { scale: 0.95, opacity: 0 }, 
+                { scale: 1, opacity: 1, duration: 0.8, ease: 'power2.out', clearProps: 'opacity,scale' }
+            );
+            gsap.fromTo('.cta-circle', 
+                { scale: 0.5, opacity: 0 }, 
+                { scale: 1, opacity: 1, duration: 0.8, ease: 'back.out(1.5)', clearProps: 'opacity,scale', delay: 0.2 }
+            );
+        }
+        sessionStorage.setItem('ja_portfolio_visited', 'true');
+    }
+
+    if (alreadyVisited) {
+        if (loaderCounter) loaderCounter.innerText = '100';
+        if (loaderProgress) loaderProgress.style.width = '100%';
+        finishPreloader();
+    } else {
+        // Reveal words
+        loaderWords.forEach((word, idx) => {
+            setTimeout(() => {
+                word.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+                word.style.transform = 'translateY(0%)';
+            }, 80 + idx * 100);
+        });
+
+        let count = 0;
+        const countInterval = setInterval(() => {
+            count += Math.floor(Math.random() * 12) + 6;
+            if (count >= 100) {
+                count = 100;
+                clearInterval(countInterval);
+                if (loaderCounter) loaderCounter.innerText = '100';
+                if (loaderProgress) loaderProgress.style.width = '100%';
+
+                setTimeout(finishPreloader, 200);
+            } else {
+                if (loaderCounter) loaderCounter.innerText = count;
+                if (loaderProgress) loaderProgress.style.width = `${count}%`;
+            }
+        }, 30);
+    }
 
     // 3. Custom Magnetic Cursor
     const cursor = document.getElementById('custom-cursor');
@@ -345,25 +355,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Contact Form Handling
+    // 8. Contact Form Handling (Web3Forms)
     const contactForm = document.getElementById('contact-form');
     const formSuccess = document.getElementById('form-success');
+    const formError = document.getElementById('form-error');
+
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const submitBtn = contactForm.querySelector('button[type="submit"]');
+            if (formError) formError.classList.add('hidden');
+
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.innerText = "Envoi en cours...";
             }
-            setTimeout(() => {
-                contactForm.reset();
-                if (formSuccess) formSuccess.classList.remove('hidden');
+
+            try {
+                const formData = new FormData(contactForm);
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    body: formData
+                });
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    contactForm.reset();
+                    if (formSuccess) formSuccess.classList.remove('hidden');
+                } else {
+                    if (formError) {
+                        formError.innerText = result.message || "Une erreur est survenue lors de l'envoi.";
+                        formError.classList.remove('hidden');
+                    } else {
+                        alert(result.message || "Une erreur est survenue.");
+                    }
+                }
+            } catch (err) {
+                if (formError) {
+                    formError.innerText = "Impossible d'envoyer le message. Vérifiez votre connexion.";
+                    formError.classList.remove('hidden');
+                } else {
+                    alert("Erreur réseau lors de l'envoi.");
+                }
+            } finally {
                 if (submitBtn) {
                     submitBtn.disabled = false;
                     submitBtn.innerText = "Envoyer le message";
                 }
-            }, 800);
+            }
         });
     }
 });
